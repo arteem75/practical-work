@@ -90,7 +90,8 @@ class JavaGraphBuilder(GraphBuilder):
                         self.graph.add_edge(parent_node, class_node,
                                             label="inherits")
                     except KeyError:
-                        print(f"Parent class{parent_name} not found")
+                        continue
+                        #print(f"Parent class{parent_name} not found")
     def visit_interface_declaration(self, node):
         class_name = ""
         for n in node.children:
@@ -154,6 +155,24 @@ class JavaGraphBuilder(GraphBuilder):
                     self.graph.add_node(field_node)
                     if parent_node is not None:
                         self.graph.add_edge(parent_node, field_node, label="def")
+    def visit_local_variable_declaration(self, node):
+       
+        parent = self.peek_declaration()
+
+        type_node = node.child_by_field_name("type")
+        var_type = type_node.text.decode("utf-8") if type_node else None
+
+        for decl in node.children:
+            if decl.type == "variable_declarator":
+                name_node = decl.child_by_field_name("name")
+                if not name_node:
+                    continue
+                var_name = name_node.text.decode("utf-8")
+                # build and add our node
+                local_node = DeclarationNode(var_name, "local_variable", parent)
+                self.graph.add_node(local_node)
+                if parent is not None:
+                    self.graph.add_edge(parent, local_node, label="def")
 
     def exit_function_definition(self, node):
         self.pop_declaration()
@@ -190,6 +209,7 @@ class JavaGraphBuilder(GraphBuilder):
             "event_definition": self.visit_event_definition,
             "field_declaration": self.visit_field_declaration,
             "constructor_declaration": self.visit_function_definition,
+
         }
         return visitors.get(node.type, self.visit_default)
 
@@ -199,6 +219,7 @@ class JavaGraphBuilder(GraphBuilder):
             "interface_declaration": self.exit_contract_declaration,
             "function_definition": self.exit_function_definition,
             "modifier_definition": self.exit_modifier_definition,
+            "local_variable_declaration": self.visit_local_variable_declaration,
         }
         return exit_funcs.get(node.type, self.exit_default)
 
@@ -222,8 +243,8 @@ def build_graph_from_file(file_path: str, language: str) -> nx.DiGraph:
 
 
 if __name__ == '__main__':
-    file_path = '/Users/artemancikov/Desktop/practical work/try1/reducer/generator_source/iter_1/updated_tree.java'
+    file_path = '/Users/artemancikov/Desktop/practical-work-new/reducer/HelloWorld.java'
     builder = JavaGraphBuilder()
     graph = builder.build_graph(file_path)
     #print()
-    nx.write_gml(graph, "java_graph_modified.gml")
+    nx.write_gml(graph, "java_graph_HelloWorld.gml")

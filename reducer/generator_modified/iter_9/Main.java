@@ -156,7 +156,7 @@ abstract class Prevue extends Strong<Integer> {
 
   public Prevue(Angels<Number> dictums) {
     super(new Parallels<Warps, Warps>(new Warps((Character keens) -> { String dynamic = "brow"; return dynamic; }), new Backup<Boolean>(-27.77)));
-    
+    this.dictums = dictums;
   }
 
   

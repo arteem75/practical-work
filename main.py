@@ -10,15 +10,10 @@ from reducer.graph import build_graph_from_file
 from reducer.modifications import AST_REMOVALS
 
 
-soft, hard = resource.getrlimit(resource.RLIMIT_STACK)
-#resource.setrlimit(resource.RLIMIT_STACK, (2**29, -1))
-#resource.setrlimit(resource.RLIMIT_STACK, (min(2**29, hard), soft))
-
-sys.setrecursionlimit(10**6)
 
 
 #example Solidity:greduce --script solidity2.sh
-#example C: greduce --source-file ./example.c --script ./cproperty.sh --language c
+#example C: jreduce --source-file ./example.c --script ./cproperty.sh --language c
 
 # Argument parsing
 parser = argparse.ArgumentParser(
@@ -47,6 +42,11 @@ parser.add_argument(
     #default="/Users/artemancikov/Desktop/practical work/try1/reducer/runJava.sh"
     default='/Users/artemancikov/Desktop/practical work/try1/short_tests/run.sh'
 )
+parser.add_argument(
+    "--mode",
+    choices=["remove", "replace"],
+    default="remove",
+    help="Choose 'remove' to only delete nodes, or 'replace' to first replace then remove.")
 args = parser.parse_args()
 
 
@@ -56,11 +56,7 @@ def main():
     print(f"Using source file: {file_path}")
 
     graph = build_graph_from_file(file_path, args.language)
-    
-    print(graph)
-    nx.write_gml(graph, "loljava_graph.gml")
-    print(args.script)
-    print(file_path)
+  
     prop_checker = BasicPropertyChecker(file_path, args.script)
     content = utils.read_file(file_path)
     
@@ -79,49 +75,58 @@ def main():
         interesting.mode = pass_
         perform_dd(interesting, lambda n: n.node_type in pass_,
                    parallel=True)
+    # if replace mode, do the replace-loop next
+    fixed_point_reached = False
+    if args.mode == "replace":
+        passes = [["function"], ["field"]]
+        interesting.option = "replace"
+        
+        counter = 0
+
+        while not fixed_point_reached:
+            old = utils.read_file(file_path)
+            for pass_ in passes:
+                interesting.mode = pass_
+                perform_dd(interesting, lambda n: n.node_type in pass_, parallel=True)
+            new = utils.read_file(file_path)
+            fixed_point_reached = (old == new)
+            counter += 1
+        print("Number of replace iterations:", counter)
     passes = [
     ["function"],
     ["constructor"],
     ["field"],
     ["class"]
     ]
+    fixed_point_reached = False
     interesting.option = "remove"
-    for i in range(10):
+    graph = build_graph_from_file(file_path, args.language)
+    interesting.graph = graph
+    while not fixed_point_reached:
+        old_content = utils.read_file(file_path)
+        
         for pass_ in passes:
+            
             graph = build_graph_from_file(file_path, args.language)
             
             interesting.graph = graph
-            interesting.mode = pass_
-            perform_dd(interesting, lambda n: n.node_type in pass_,
-                    parallel=True)
-    
-        
-        
-    interesting.option = "remove"
-    passes2 = [['class'],['constructor']]
-    for i in range(10):
-        for pass_ in passes2:
-            graph = build_graph_from_file(file_path, args.language)
             
-            interesting.graph = graph
             interesting.mode = pass_
             perform_dd(interesting, lambda n: n.node_type in pass_,
                     parallel=True)
+        new_content = utils.read_file(file_path)
+        if old_content == new_content:
+            fixed_point_reached = True
     
 
-    for i in range(10):
-        for pass_ in passes:
-            graph = build_graph_from_file(file_path, args.language)
-            
-            interesting.graph = graph
-            interesting.mode = pass_
-            perform_dd(interesting, lambda n: n.node_type in pass_,
-                    parallel=True)
+
+   
     #one last pass
     end_time = time.time()
     # Calculate the elapsed time
     elapsed_time = end_time - start_time
     print(f"Execution time: {elapsed_time} seconds")
+    #print("Number of all iterations:",counter)
 
 
 if __name__ == "__main__":

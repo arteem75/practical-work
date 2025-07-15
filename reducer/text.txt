@@ -1,0 +1,45 @@
+    def replace_local_variable(self, node_to_replace, tree):
+        """
+        Find *read* uses of a single local variable and return
+        ([list_of_nodes], var_type).
+        """
+        name = node_to_replace.name
+        # 1) figure out its declared type
+        decl_query = JAVA_LANGUAGE.query(f'''
+        (local_variable_declaration
+            type: (_) @var_type
+            declarator: (variable_declarator
+                name: (identifier) @var_name (#eq? @var_name "{name}")
+            )
+        )
+        ''')
+        var_type = None
+        for n, cap in decl_query.captures(tree.root_node):
+            if cap == "var_type":
+                var_type = tree.text[n.start_byte:n.end_byte].decode("utf-8").strip()
+
+        # 2) now only grab *reads* in these contexts:
+        use_query = JAVA_LANGUAGE.query(f'''
+        ;; initializer RHS: int x = a;
+        (variable_declarator
+            name: (identifier) @decl_name (#eq? @decl_name "{name}")
+            value: (identifier) @use1 (#eq? @use1 "{name}")
+        )
+        ;; assignment RHS: x = a;
+        (assignment_expression right: (identifier) @use2 (#eq? @use2 "{name}"))
+        ;; return x;
+        (return_statement (identifier) @use3 (#eq? @use3 "{name}"))
+        ;; argument: foo(x)
+        (argument_list (identifier) @use4 (#eq? @use4 "{name}"))
+        ;; binary ops: x  y, y  x
+        (binary_expression left: (identifier) @use5 (#eq? @use5 "{name}"))
+        (binary_expression right: (identifier) @use6 (#eq? @use6 "{name}"))
+        ''')
+
+        to_replace = []
+        for n, cap in use_query.captures(tree.root_node):
+            # only the captures named use1…use6
+            if cap.startswith("use") and self.is_read_context(n):
+                to_replace.append(n)
+
+        return to_replace, var_type

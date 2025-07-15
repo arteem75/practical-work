@@ -64,6 +64,8 @@ class Interesting():
         if mode == "break":
             nodes_to_remove = set(filter(lambda n: n.node_type == "class", nodes_to_remove))
             modified_content = ast_removal.break_inheritance(nodes_to_remove)
+        elif mode == "replace":
+            modified_content = ast_removal.remove_nodes(nodes_to_remove, replace=True)
         else:
             modified_content = ast_removal.remove_nodes(nodes_to_remove)
         #modified_content = ast_removal.remove_nodes(nodes_to_remove)

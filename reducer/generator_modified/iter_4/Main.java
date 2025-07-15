@@ -3,7 +3,7 @@ package src.flaunt;
 class Main {
   
 
-  static String recants = "orientals";
+  
 
   
 

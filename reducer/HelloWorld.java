@@ -1,21 +1,35 @@
 public class HelloWorld {
-    int rails = approve(1);
+    int rails = 42;
     int snitch = 1;
+    HelloWorld hw = new HelloWorld();
+    HelloWorld z = hw.hello(hw);
     HelloWorld() {
         this.rails = 1;
         this.snitch = 1;
+    }
+    public static HelloWorld hello(HelloWorld hw){
+        return hw
     }
     public static int approve(int a) {
         HelloWorld helloWorld = new HelloWorld();
         helloWorld.rails = 1;
         this.rails = 1;
-        int x = approve(this.rails);
+        int x = 42;
+        int z = x;
+        System.out.println(x);
+        
+       
+        return 0;
+    }
+    public static int approve2(int a) {
+        HelloWorld helloWorld = new HelloWorld();
+        helloWorld.rails = 1;
+        this.rails = 1;
+        int x = 42;
+        int z = 42;
         System.out.println("Hello, world!");
-        String s = 1;
-        A a = new A();
-        B b = new B();
-        a.rails = 1;
-        b.rails = 1;
+        
+       
         return 0;
     }
     
@@ -23,44 +37,14 @@ public class HelloWorld {
     
     
     
+}
+public class Main {
+    HelloWorld hw = new HelloWorld();
+    int x = 42;
+    int y = 42;
+    int z = 42;
+    int u = 42 + 42;
+    int k = 42;
+    String s = 1;
 }
 
-public class A extends HelloWorld {
-    int rails = 1;
-    int snitch = 1;
-    public A() {
-        super();
-        this.rails = 1;
-        this.snitch = 1;
-        
-    }
-    public static int approve(int a) {
-        A a = new A();
-        a.rails = 1;
-        this.rails = 1;
-        int x = approve(this.rails);
-        System.out.println("Hello, world!");
-        String s = 1;
-        return 0;
-    }
-}
-public class B extends A {
-    int rails = 1;
-    int snitch = 1;
-    public B() {
-        super();
-        this.rails = 1;
-        this.snitch = 1;
-        
-    }
-    public static int approve(int a) {
-        B b = new B();
-        b.rails = 1;
-        this.rails = 1;
-        int x = approve(this.rails);
-        System.out.println("Hello, world!");
-        String s = 1;
-        return 0;
-    }
-}
-    

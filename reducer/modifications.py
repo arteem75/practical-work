@@ -8,15 +8,19 @@ try:
 except ImportError:
     import parsers
     from graph import DeclarationNode
+
+
 JAVA_LANGUAGE = Language("/Users/artemancikov/Desktop/practical work/try1/reducer/build/java.so", "java")
 
 class ASTRemoval(parsers.TreeTraversal):
+    
     def __init__(self, content, graph: nx.DiGraph):
         self.content = content
         self.graph = graph
         self.removals = []
         self.replacements = []
 
+    
     @abstractmethod
     def remove_nodes(self, nodes_to_remove: set) -> str:
         pass
@@ -26,15 +30,19 @@ class JavaDeclarationRemoval(ASTRemoval):
     LANGUAGE = "java"
     count = 0
 
+    
     def __init__(self, content, graph):
         super().__init__(content, graph)
         self.removed_nodes = []
 
+    
     def visit_default(self, node):
         pass
 
+    
     def exit_default(self, node):
         pass
+    
     def delete_nodes(self, tree):
         self.removed_nodes = self.filter_enclosing_nodes(self.removed_nodes) #remove duplicates and nested nodes
         self.removed_nodes.sort(key=lambda node: node.start_byte, reverse=True)
@@ -52,6 +60,7 @@ class JavaDeclarationRemoval(ASTRemoval):
         #print(modified_code.decode("utf-8"))
         return modified_code.decode("utf-8")
 
+    
     def get_node_visitor(self, node):
         visitors = {
             "method_declaration": self.visit_function_definition,
@@ -59,19 +68,23 @@ class JavaDeclarationRemoval(ASTRemoval):
         }
         return visitors.get(node.type, self.visit_default)
 
+    
     def get_node_exit(self, node):
         exit_funcs = {
         }
         return exit_funcs.get(node.type, self.exit_default)
+    
     def is_contained(self,inner, outer):
         return (outer.start_byte <= inner.start_byte and outer.end_byte >= inner.end_byte)
 
+    
     def filter_enclosing_nodes(self,nodes):
         result = []
         for node in nodes:
             if not any(self.is_contained(node, other) and node != other for other in nodes):
                 result.append(node)
         return result
+    
     def break_inheritance(self, nodes_to_remove: set):
         parser = parsers.get_parser(self.LANGUAGE)
         tree = parser.parse(self.content.encode("utf-8"))
@@ -116,7 +129,7 @@ class JavaDeclarationRemoval(ASTRemoval):
                                     self.removed_nodes.append(statement)
         return self.delete_nodes(tree)
 
-
+    
     def visit_super_calls(self, tree):
         query = JAVA_LANGUAGE.query("""
         (
@@ -132,7 +145,7 @@ class JavaDeclarationRemoval(ASTRemoval):
             while current is not None and current.type != "class_declaration":
                 current = current.parent
             if current is None:
-                print("No class declaration found for super call")
+                #print("No class declaration found for super call")
                 continue
             for child in current.children:
                 if child.type == "superclass" or child.type == "super_interfaces":
@@ -142,6 +155,7 @@ class JavaDeclarationRemoval(ASTRemoval):
             self.removed_nodes.append(node)
 
 
+    
     def visit_function_definition(self, node):
         
         
@@ -156,6 +170,7 @@ class JavaDeclarationRemoval(ASTRemoval):
             self.removed_nodes.append(node)
         
 
+    
     def visit_call_expression(self, node):
         child = node.children[0]
         assert child.type == "expression"
@@ -181,11 +196,35 @@ class JavaDeclarationRemoval(ASTRemoval):
                         break
                     case _:
                         current_node = current_node.parent
+    
     def remove_nodes(self, nodes_to_remove: set, replace=False):
         if replace:
             return self.replace_nodes(nodes_to_remove)
         else:
             return self.remove_nodes_(nodes_to_remove)
+    def remove_local_variable(self, node_to_remove, tree):
+        name = node_to_remove.name
+        decl_q = JAVA_LANGUAGE.query(f"""
+        (local_variable_declaration
+          declarator: (variable_declarator
+            name: (identifier) @var_name 
+            (#eq? @var_name "{name}")
+          )
+        ) @decl
+        """)
+        for n, cap in decl_q.captures(tree.root_node):
+            if cap == "decl":
+                self.removed_nodes.append(n)
+
+        # 2) remove any statement that mentions it
+        id_q = JAVA_LANGUAGE.query(f"""
+        (identifier) @id (#eq? @id "{name}")
+        """)
+        for n, cap in id_q.captures(tree.root_node):
+            if cap == "id":
+                stmt = self.find_ancestor(n, 'statement')
+                if stmt:
+                    self.removed_nodes.append(stmt)
     def remove_class(self, node_to_remove, tree):
         name = node_to_remove.name
 
@@ -237,6 +276,7 @@ class JavaDeclarationRemoval(ASTRemoval):
             if cap in {"expr", "stmt"}:
                 self.removed_nodes.append(node)
 
+    
     def remove_function(self, node_to_remove,tree):
         name = node_to_remove.name
         method_query_str = f'''(method_declaration name: (identifier) @func_name (#eq? @func_name "{name}")) @method'''
@@ -275,6 +315,7 @@ class JavaDeclarationRemoval(ASTRemoval):
                 self.removed_nodes.append(node)
 
 
+    
     def remove_constructor(self, node_to_remove, tree):
         name = node_to_remove.name
         constructor_query_str = f'''(constructor_declaration name: (identifier) @ctor_name (#eq? @ctor_name "{name}")) @ctor'''
@@ -283,6 +324,7 @@ class JavaDeclarationRemoval(ASTRemoval):
             if capture_name == "ctor":
                 self.removed_nodes.append(node)
 
+    
     def remove_field(self, node_to_remove, tree):
         name = node_to_remove.name
         field_decl_query_str = f'''( (field_declaration declarator: (variable_declarator name: (identifier) @field_name value: (_) @field_value ) ) (#eq? @field_name "{name}") )'''
@@ -339,6 +381,7 @@ class JavaDeclarationRemoval(ASTRemoval):
 
             
         
+    
     def remove_nodes_(self, nodes_to_remove: set):
         self.removed_nodes = []
         self.count += 1
@@ -358,11 +401,233 @@ class JavaDeclarationRemoval(ASTRemoval):
                     self.remove_field(node_to_remove,tree)
                 case "class":
                     self.remove_class(node_to_remove,tree)
+                case "local_variable":
+                    self.remove_local_variable(node_to_remove, tree)
             
         return self.delete_nodes(tree)
     
-    def replace_nodes(self, nodes_to_remove: set):
+    def find_ancestor(self,node, typ):
+        cur = node.parent
+        while cur:
+            if cur.type == typ:
+                return cur
+            cur = cur.parent
+        return None
 
+    
+    def node_in_subtree(self,target, root):
+        if root is None:
+            return False
+        if target == root:
+            return True
+        for c in root.children:
+            if self.node_in_subtree(target, c):
+                return True
+        return False
+
+    
+    def is_read_context(self,node):
+        decl = self.find_ancestor(node, 'variable_declarator')
+        if decl and decl.child_by_field_name('name') == node:
+            return False
+
+        param = self.find_ancestor(node, 'formal_parameter')
+        if param and param.child_by_field_name('name') == node:
+            return False
+
+        assign = self.find_ancestor(node, 'assignment_expression')
+        if assign:
+            left = assign.child_by_field_name('left') or (assign.children[0] if assign.children else None)
+            if left and self.node_in_subtree(node, left):
+                return False
+
+        return True
+    
+    def replace_field(self,node_to_replace,tree):
+        name = node_to_replace.name
+        access_query= JAVA_LANGUAGE.query(f'''
+        ;; Initializers: int z = x; int y = this.x;
+        (variable_declarator
+            value: (identifier) @use
+            (#eq? @use {name}))
+        (variable_declarator
+            value: (field_access
+                    field: (identifier) @field_name
+                    (#eq? @field_name {name})) @use)
+
+        ;; RHS of assignments: z = x; z = this.x;
+        (assignment_expression
+            right: (identifier) @use
+            (#eq? @use {name}))
+        (assignment_expression
+            right: (field_access
+                    field: (identifier) @field_name
+                    (#eq? @field_name {name})) @use)
+
+        ;; Argument: approve(x); approve(this.x);
+        (argument_list
+            (identifier) @use
+            (#eq? @use {name}))
+        (argument_list
+            (field_access
+                    field: (identifier) @field_name
+                    (#eq? @field_name {name})) @use)
+
+        ;; Return: return x; return this.x;
+        (return_statement
+            (identifier) @use
+            (#eq? @use {name}))
+        (return_statement
+            (field_access
+                    field: (identifier) @field_name
+                    (#eq? @field_name {name})) @use)
+
+        ;; Binary expression: x + y, y + x, this.x + ... 
+        (binary_expression
+            left: (identifier) @use
+            (#eq? @use {name}))
+        (binary_expression
+            right: (identifier) @use
+            (#eq? @use {name}))
+        (binary_expression
+            left: (field_access
+                    field: (identifier) @field_name
+                    (#eq? @field_name {name})) @use)
+        (binary_expression
+            right: (field_access
+                    field: (identifier) @field_name
+                    (#eq? @field_name {name})) @use)
+        ''')
+
+
+        decl_query_str = f'''
+            (field_declaration
+            type: (_) @field_type
+            declarator: (variable_declarator
+                name: (identifier) @field_name
+                (#eq? @field_name "{name}")
+            )
+            ) @decl
+            '''
+
+
+        query = JAVA_LANGUAGE.query(decl_query_str)
+        captures = query.captures(tree.root_node) 
+
+     
+        field_name = None #used for debugging
+        field_type = None
+        source_code = tree.text
+        code = bytearray(source_code)
+        
+        for node, cap in captures:
+            text = code[node.start_byte:node.end_byte].decode()
+            if cap == "field_name":
+                field_name = text
+            elif cap == "field_type":
+                field_type = text
+        
+
+        query = access_query
+        captures = query.captures(tree.root_node) #capture access
+        nodes_to_replace = []
+        for node, cap_name in captures:
+            if not self.is_read_context(node): #make sure it's not LHS
+                continue
+            nodes_to_replace.append(node)
+
+        return (nodes_to_replace,field_type)
+       
+            
+    
+    def replace_function(self, node_to_replace, tree):
+
+        name = node_to_replace.name
+        source_code = tree.text
+        
+        decl_query_str = f'''
+            (method_declaration type: (_) @return_type 
+            name: (identifier) @func_name 
+            parameters: (formal_parameters) @params 
+            (#eq? @func_name {name} ))'''
+        
+        decl_query = JAVA_LANGUAGE.query(decl_query_str)
+        rt = None
+        for node, capture_name in decl_query.captures(tree.root_node):
+            if capture_name == "return_type":
+                rt = source_code[node.start_byte:node.end_byte].decode("utf-8").strip()
+            
+        
+        call_query_str = f'''
+            (method_invocation name: (identifier) @call_name
+            arguments: (argument_list) @args 
+            #eq? @call_name {name} )) @call'''
+        call_query = JAVA_LANGUAGE.query(call_query_str)
+
+        nodes_to_replace = []
+        call_arg_types = {}
+        for node, capture_name in call_query.captures(tree.root_node):
+            if capture_name == "call":
+                nodes_to_replace.append(node)
+                arg_list_node = None
+                for child in node.children:
+                    if child.type == "argument_list":
+                        arg_list_node = child
+                        break
+                if arg_list_node:
+                    arg_types = self.extract_arg_types(arg_list_node) #tried handling overloading here, if failed, just boils down to return type
+                    arg_types = arg_types if arg_types else rt
+                else:
+                    arg_types = rt
+                call_arg_types[node] = arg_types
+        return (nodes_to_replace,rt)
+    def replace_local_variable(self, node_to_replace, tree):
+        """
+        Find *read* uses of a single local variable and return
+        ([list_of_nodes], var_type).
+        """
+        name = node_to_replace.name
+        # 1) figure out its declared type
+        decl_query = JAVA_LANGUAGE.query(f'''
+        (local_variable_declaration
+            type: (_) @var_type
+            declarator: (variable_declarator
+                name: (identifier) @var_name (#eq? @var_name "{name}")
+            )
+        )
+        ''')
+        var_type = None
+        for n, cap in decl_query.captures(tree.root_node):
+            if cap == "var_type":
+                var_type = tree.text[n.start_byte:n.end_byte].decode("utf-8").strip()
+
+        # 2) now only grab *reads* in these contexts:
+        use_query = JAVA_LANGUAGE.query(f'''
+        ;; initializer RHS: int x = a;
+        (variable_declarator
+            name: (_)
+            value: (identifier) @use1 (#eq? @use1 "{name}")
+        )
+        ;; assignment RHS: x = a;
+        (assignment_expression right: (identifier) @use2 (#eq? @use2 "{name}"))
+        ;; return x;
+        (return_statement (identifier) @use3 (#eq? @use3 "{name}"))
+        ;; argument: foo(x)
+        (argument_list (identifier) @use4 (#eq? @use4 "{name}"))
+        ;; binary ops: x  y, y  x
+        (binary_expression left: (identifier) @use5 (#eq? @use5 "{name}"))
+        (binary_expression right: (identifier) @use6 (#eq? @use6 "{name}"))
+        ''')
+
+        to_replace = []
+        for n, cap in use_query.captures(tree.root_node):
+            # only the captures named use1…use6
+            if cap.startswith("use") and self.is_read_context(n):
+                to_replace.append(n)
+
+        return to_replace, var_type
+    
+    def replace_nodes(self, nodes_to_remove: set):
         return_mapping = {
             "int": "42",
             "boolean": "true",
@@ -382,74 +647,58 @@ class JavaDeclarationRemoval(ASTRemoval):
             "Short": "0",
             "long": "0L",
             "Long": "0L",
+            
         }
-        
+
         parser = parsers.get_parser(self.LANGUAGE)
         tree = parser.parse(self.content.encode("utf-8"))
         source_code = tree.text
-        
+        modified_code = bytearray(source_code)
         self.nodes_to_remove = nodes_to_remove
-        
+        nodes_to_replace = []
+        mapping = dict()
         for node in self.nodes_to_remove:
-            name = node.name
-            overload_mapping = {}
+            if node.node_type == 'field':
+                fields_to_replace = self.replace_field(node,tree)
+                nodes_to_replace.append(fields_to_replace)
 
-            decl_str1 = "(method_declaration type: (_) @return_type name: (identifier) @func_name parameters: (formal_parameters) @params (#eq? @func_name \""
-            decl_str2 = "\"))"
-            decl_query_str = decl_str1 + name + decl_str2
-            decl_query = JAVA_LANGUAGE.query(decl_query_str)
-            for node, capture_name in decl_query.captures(tree.root_node):
-                if capture_name == "return_type":
-                    rt = source_code[node.start_byte:node.end_byte].decode("utf-8").strip()
-                elif capture_name == "params":
-                    params_text = source_code[node.start_byte:node.end_byte].decode("utf-8").strip()
-                    param_types = self.extract_param_types(params_text)
-                    constant = return_mapping.get(rt)
-                    if constant != None:
-                        overload_mapping[param_types] = constant
-            call_query_str1 ="(method_invocation name: (identifier) @call_name arguments: (argument_list) @args (#eq? @call_name \""
-            call_query_str2 = "\")) @call"
-            call_query_str = call_query_str1 + name + call_query_str2
-            call_query = JAVA_LANGUAGE.query(call_query_str)
+            elif node.node_type =='function':
+                functions_to_replace = self.replace_function(node,tree)
+                nodes_to_replace.append(functions_to_replace)
+            elif node.node_type == 'local_variable':
+                locals_to_replace = self.replace_local_variable(node, tree)
+                nodes_to_replace.append(locals_to_replace)
+        for arr,typ in nodes_to_replace:
+            for n in arr:
+                mapping[n] = typ
+        nodes_to_replace = [n for n, _ in nodes_to_replace]
+        nodes_to_replace = [item for sub in nodes_to_replace for item in sub]
 
-            nodes_to_replace = []
-            call_arg_types = {}
 
-            for node, capture_name in call_query.captures(tree.root_node):
-                if capture_name == "call":
-                    nodes_to_replace.append(node)
-                    arg_list_node = None
-                    for child in node.children:
-                        if child.type == "argument_list":
-                            arg_list_node = child
-                            break
-                    if arg_list_node:
-                        arg_types = self.extract_arg_types(arg_list_node)
-                    else:
-                        arg_types = tuple()
-                    call_arg_types[node] = arg_types
+        
 
-            nodes_to_replace = sorted(set(nodes_to_replace), key=lambda n: n.start_byte, reverse=True)
+        nodes_to_replace = sorted(set(nodes_to_replace), key=lambda n: n.start_byte, reverse=True)
+        nodes_to_replace = self.filter_enclosing_nodes(nodes_to_replace)
+        modified_code = bytearray(source_code)
 
-            modified_code = bytearray(source_code)
-
-            for node in nodes_to_replace:
-                arg_types = call_arg_types[node]
-                constant_value = overload_mapping.get(arg_types)
-                if constant_value is None:
-                    continue
-                replacement_text = constant_value.encode("utf-8")
-                start = node.start_byte
-                end = node.end_byte
-                modified_code[start:end] = replacement_text
-            modified_code = modified_code.decode("utf-8")
-            tree = parser.parse(modified_code.encode("utf-8"))
-            source_code = tree.text
+        for node in nodes_to_replace:
+            
+            constant_value = return_mapping.get(mapping.get(node, None), None)
+            if constant_value is None:
+                typ = mapping.get(node, None)
+                if typ:
+                    constant_value = f"({typ}) null"
+            replacement_text = constant_value.encode("utf-8")
+            start = node.start_byte
+            end = node.end_byte
+            modified_code[start:end] = replacement_text
+        modified_code = modified_code.decode("utf-8")
+        tree = parser.parse(modified_code.encode("utf-8"))
+        source_code = tree.text
         self.content = modified_code
-        modified_code = self.remove_nodes_(nodes_to_remove)
         return modified_code
 
-
+    
     def extract_param_types(self,params_text):
         #avoid string operations, replace with nodes from the parse tree
         params_text = params_text.strip()
@@ -467,6 +716,7 @@ class JavaDeclarationRemoval(ASTRemoval):
                 types.append(tokens[0])
         return tuple(types)
 
+    
     def get_literal_type(self,node):
 
         typemap = {
@@ -476,6 +726,7 @@ class JavaDeclarationRemoval(ASTRemoval):
         }
         return typemap.get(node.type, None)
 
+    
     def extract_arg_types(self,arg_list_node):
 
         arg_types = []
@@ -492,14 +743,15 @@ AST_REMOVALS = {
 }
 
 if __name__ == "__main__":
-    file_name = "/Users/artemancikov/Desktop/practical work/try1/reducer/HelloWorld.java"
+    file_name = "/Users/artemancikov/Desktop/practical-work-new/reducer/HelloWorld.java"
     #'/Users/artemancikov/Desktop/practical work/try1/generator/iter_1/Main.java'
     import utils
     content = utils.read_file(file_name)
     modifier = JavaDeclarationRemoval(content, nx.DiGraph())
     
-    remove = True
+    remove = False
     if remove:
+        """
         updated_tree = modifier.break_inheritance(
         {DeclarationNode("A", "class", None),
          DeclarationNode("B", "class", None),
@@ -508,11 +760,12 @@ if __name__ == "__main__":
             #DeclarationNode("HelloWorld", "constructor", None),
          #DeclarationNode("foo", "function", None),
          })
-        updated_tree = modifier.remove_nodes({DeclarationNode("A", "class", None),
+         """
+        updated_tree = modifier.remove_nodes({DeclarationNode("hw", "field", None),
          DeclarationNode("B", "class", None)})
     else:
         updated_tree = modifier.replace_nodes(
-            {DeclarationNode("approve", "function", None),
+            {DeclarationNode("hw", "field", None),
             #DeclarationNode("foo", "function", None),
             })
    #print(updated_tree)

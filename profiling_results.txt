@@ -1,0 +1,798 @@
+Timer unit: 1e-09 s
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: __init__ at line 37
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    37                                               @profile
+    38                                               def __init__(self, content, graph):
+    39                                                   super().__init__(content, graph)
+    40                                                   self.removed_nodes = []
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: visit_default at line 42
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    42                                               @profile
+    43                                               def visit_default(self, node):
+    44                                                   pass
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: exit_default at line 46
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    46                                               @profile
+    47                                               def exit_default(self, node):
+    48                                                   pass
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: delete_nodes at line 49
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    49                                               @profile
+    50                                               def delete_nodes(self, tree):
+    51                                                   self.removed_nodes = self.filter_enclosing_nodes(self.removed_nodes) #remove duplicates and nested nodes
+    52                                                   self.removed_nodes.sort(key=lambda node: node.start_byte, reverse=True)
+    53                                                   source_code = tree.text
+    54                                                   modified_code = bytearray(source_code)
+    55                                                   #self.removed_nodes = list(set(self.removed_nodes))
+    56                                           
+    57                                                   for node in self.removed_nodes:
+    58                                                       
+    59                                                       #print('deleting',node.text)
+    60                                                       start = node.start_byte
+    61                                                       end = node.end_byte
+    62                                                       del modified_code[start:end]
+    63                                                  
+    64                                                   #print(modified_code.decode("utf-8"))
+    65                                                   return modified_code.decode("utf-8")
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: get_node_visitor at line 67
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    67                                               @profile
+    68                                               def get_node_visitor(self, node):
+    69                                                   visitors = {
+    70                                                       "method_declaration": self.visit_function_definition,
+    71                                                       "call_expression": self.visit_call_expression,
+    72                                                   }
+    73                                                   return visitors.get(node.type, self.visit_default)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: get_node_exit at line 75
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    75                                               @profile
+    76                                               def get_node_exit(self, node):
+    77                                                   exit_funcs = {
+    78                                                   }
+    79                                                   return exit_funcs.get(node.type, self.exit_default)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: is_contained at line 80
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    80                                               @profile
+    81                                               def is_contained(self,inner, outer):
+    82                                                   return (outer.start_byte <= inner.start_byte and outer.end_byte >= inner.end_byte)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: filter_enclosing_nodes at line 84
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    84                                               @profile
+    85                                               def filter_enclosing_nodes(self,nodes):
+    86                                                   result = []
+    87                                                   for node in nodes:
+    88                                                       if not any(self.is_contained(node, other) and node != other for other in nodes):
+    89                                                           result.append(node)
+    90                                                   return result
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: break_inheritance at line 91
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    91                                               @profile
+    92                                               def break_inheritance(self, nodes_to_remove: set):
+    93                                                   parser = parsers.get_parser(self.LANGUAGE)
+    94                                                   tree = parser.parse(self.content.encode("utf-8"))
+    95                                                   #self.visit_super_calls(tree)
+    96                                                   for node in nodes_to_remove:
+    97                                           
+    98                                                       class_name = node.name
+    99                                           
+   100                                                       query = JAVA_LANGUAGE.query(f"""
+   101                                                       (class_declaration
+   102                                                       name: (identifier) @class_name
+   103                                                       (#eq? @class_name "{class_name}")) @class
+   104                                                       """)
+   105                                           
+   106                                                       captures = query.captures(tree.root_node)
+   107                                                       class_node = None
+   108                                                       for node, capture_name in captures:
+   109                                                           if capture_name == "class":
+   110                                                               class_node = node
+   111                                                               break
+   112                                           
+   113                                                       if class_node is None:
+   114                                                           continue
+   115                                           
+   116                                                       for child in class_node.children:
+   117                                                           if child.type == "superclass" or child.type == "super_interfaces":
+   118                                                               self.removed_nodes.append(child)
+   119                                           
+   120                                                       for child in class_node.children:
+   121                                                           if child.type != "class_body":
+   122                                                               continue
+   123                                                           for member in child.children:
+   124                                                               if member.type != "constructor_declaration":
+   125                                                                   continue
+   126                                                               for ctor_child in member.children:
+   127                                                                   if ctor_child.type != "constructor_body":
+   128                                                                       continue
+   129                                                                   for statement in ctor_child.children:
+   130                                                                       if statement.type == "explicit_constructor_invocation":
+   131                                                                           ctor_field = statement.child_by_field_name("constructor")
+   132                                                                           if ctor_field and ctor_field.type == "super":
+   133                                                                               self.removed_nodes.append(statement)
+   134                                                   return self.delete_nodes(tree)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: visit_super_calls at line 136
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   136                                               @profile
+   137                                               def visit_super_calls(self, tree):
+   138                                                   query = JAVA_LANGUAGE.query("""
+   139                                                   (
+   140                                                   (explicit_constructor_invocation
+   141                                                       constructor: (super)
+   142                                                       arguments: (argument_list) @args) @super_ctor
+   143                                                   )
+   144                                                   """)
+   145                                                   capt = query.captures(tree.root_node)
+   146                                           
+   147                                                   for node, _ in capt:
+   148                                                       current = node
+   149                                                       while current is not None and current.type != "class_declaration":
+   150                                                           current = current.parent
+   151                                                       if current is None:
+   152                                                           #print("No class declaration found for super call")
+   153                                                           continue
+   154                                                       for child in current.children:
+   155                                                           if child.type == "superclass" or child.type == "super_interfaces":
+   156                                                               self.removed_nodes.append(child)
+   157                                                               break
+   158                                            
+   159                                                       self.removed_nodes.append(node)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: visit_function_definition at line 162
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   162                                               @profile
+   163                                               def visit_function_definition(self, node):
+   164                                                   
+   165                                                   
+   166                                                   #function_name = node.children[1].text.decode("utf-8")
+   167                                                   function_name = None
+   168                                                   for n in node.children:
+   169                                                       if n.type == "identifier":
+   170                                                           function_name = n.text.decode("utf-8")
+   171                                                           break
+   172                                                   if any((node.name == function_name and node.node_type == "function")
+   173                                                          for node in self.nodes_to_remove):
+   174                                                       self.removed_nodes.append(node)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: visit_call_expression at line 177
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   177                                               @profile
+   178                                               def visit_call_expression(self, node):
+   179                                                   child = node.children[0]
+   180                                                   assert child.type == "expression"
+   181                                                   match child.children[0].type:
+   182                                                       case "member_expression":
+   183                                                           call_name = child.children[0].children[-1].text.decode("utf-8")
+   184                                                       case "identifier":
+   185                                                           call_name = child.children[0].text.decode("utf-8")
+   186                                                       case _:
+   187                                                           raise Exception("Unknown node")
+   188                                                   if any(node.name == call_name for node in self.nodes_to_remove):
+   189                                                       self.removed_nodes.append(node)
+   190                                                       current_node = node
+   191                                                       while True:
+   192                                                           match current_node.type:
+   193                                                               case "assignment_expression":
+   194                                                                   self.removed_nodes.remove(node)
+   195                                                                   self.removed_nodes.append(current_node)
+   196                                                                   break
+   197                                                               case "function_body":
+   198                                                                   break
+   199                                                               case None:
+   200                                                                   break
+   201                                                               case _:
+   202                                                                   current_node = current_node.parent
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: remove_nodes at line 203
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   203                                               @profile
+   204                                               def remove_nodes(self, nodes_to_remove: set, replace=False):
+   205                                                   if replace:
+   206                                                       return self.replace_nodes(nodes_to_remove)
+   207                                                   else:
+   208                                                       return self.remove_nodes_(nodes_to_remove)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: remove_class at line 209
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   209                                               @profile
+   210                                               def remove_class(self, node_to_remove, tree):
+   211                                                   name = node_to_remove.name
+   212                                           
+   213                                                   query = JAVA_LANGUAGE.query(f"""
+   214                                                   (class_declaration
+   215                                                       name: (identifier) @class_name
+   216                                                       (#eq? @class_name "{name}")) @class_node
+   217                                                  
+   218                                                   """)
+   219                                                   query2 =  JAVA_LANGUAGE.query(f"""
+   220                                                                                 (interface_declaration
+   221                                                   name: (identifier) @interface_name
+   222                                                   (#eq? @interface_name "{name}")) @interface_node
+   223                                                    """)
+   224                                                   class_node = None
+   225                                                   for node, capture in query.captures(tree.root_node):
+   226                                                       if capture == "class_node":
+   227                                                           class_node = node
+   228                                                           break
+   229                                           
+   230                                                   if class_node is None:
+   231                                                       for node, capture in query2.captures(tree.root_node):
+   232                                                           if capture == "interface_node":
+   233                                                               class_node = node
+   234                                                               break
+   235                                                   if class_node is None:
+   236                                                       return
+   237                                           
+   238                                                  
+   239                                           
+   240                                                   self.removed_nodes.append(class_node)
+   241                                           
+   242                                                   usage_query = JAVA_LANGUAGE.query(f"""
+   243                                                   (object_creation_expression type: (type_identifier) @used_type
+   244                                                   (#eq? @used_type "{name}")) @expr
+   245                                           
+   246                                                   (cast_expression type: (type_identifier) @used_type
+   247                                                   (#eq? @used_type "{name}")) @expr
+   248                                           
+   249                                                   (local_variable_declaration
+   250                                                       type: (type_identifier) @used_type
+   251                                                       (#eq? @used_type "{name}")) @stmt
+   252                                           
+   253                                                   (field_declaration
+   254                                                       type: (type_identifier) @used_type
+   255                                                       (#eq? @used_type "{name}")) @stmt
+   256                                                   """)
+   257                                                   for node, cap in usage_query.captures(tree.root_node):
+   258                                                       if cap in {"expr", "stmt"}:
+   259                                                           self.removed_nodes.append(node)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: remove_function at line 261
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   261                                               @profile
+   262                                               def remove_function(self, node_to_remove,tree):
+   263                                                   name = node_to_remove.name
+   264                                                   method_query_str = f'''(method_declaration name: (identifier) @func_name (#eq? @func_name "{name}")) @method'''
+   265                                                   
+   266                                                   call_query_str = f'''(method_invocation name:(identifier) @call_name (#eq? @call_name "{name}")) @call'''
+   267                                           
+   268                                                   method_query = JAVA_LANGUAGE.query(method_query_str)
+   269                                                   call_query = JAVA_LANGUAGE.query(call_query_str)
+   270                                               
+   271                                                   for node, capture_name in method_query.captures(tree.root_node):
+   272                                                       if capture_name == "method":
+   273                                                           function_args = ""
+   274                                                           for child in node.children:
+   275                                                               if child.type == "formal_parameters":
+   276                                                                   function_args = child.text.decode("utf-8")
+   277                                                                   break
+   278                                                           if function_args == node_to_remove.args:
+   279                                                               self.removed_nodes.append(node)
+   280                                                   for node, capture_name in call_query.captures(tree.root_node):
+   281                                                       if capture_name == "call":
+   282                                                           current_node = node
+   283                                                           while current_node.parent is not None:
+   284                                                               if current_node.type in {
+   285                                                                   "local_variable_declaration",
+   286                                                                   "assignment_expression",
+   287                                                                   "expression_statement",
+   288                                                                   "return_statement",
+   289                                                                   "field_declaration",
+   290                                                                   
+   291                                                               }:
+   292                                                                   self.removed_nodes.append(current_node)
+   293                                                                   break
+   294                                                               current_node = current_node.parent
+   295                                                   for node, capture_name in call_query.captures(tree.root_node):
+   296                                                       if capture_name == "call":
+   297                                                           self.removed_nodes.append(node)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: remove_constructor at line 300
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   300                                               @profile
+   301                                               def remove_constructor(self, node_to_remove, tree):
+   302                                                   name = node_to_remove.name
+   303                                                   constructor_query_str = f'''(constructor_declaration name: (identifier) @ctor_name (#eq? @ctor_name "{name}")) @ctor'''
+   304                                                   constructor_query = JAVA_LANGUAGE.query(constructor_query_str)
+   305                                                   for node, capture_name in constructor_query.captures(tree.root_node):
+   306                                                       if capture_name == "ctor":
+   307                                                           self.removed_nodes.append(node)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: remove_field at line 309
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   309                                               @profile
+   310                                               def remove_field(self, node_to_remove, tree):
+   311                                                   name = node_to_remove.name
+   312                                                   field_decl_query_str = f'''( (field_declaration declarator: (variable_declarator name: (identifier) @field_name value: (_) @field_value ) ) (#eq? @field_name "{name}") )'''
+   313                                                   field_query = JAVA_LANGUAGE.query(field_decl_query_str)
+   314                                           
+   315                                                   field_access_query_str = f'''
+   316                                                   (expression_statement
+   317                                                       (assignment_expression
+   318                                                       left: (field_access
+   319                                                               field: (identifier) @field_name
+   320                                                               (#eq? @field_name "{name}")))) @stmt
+   321                                           
+   322                                                   (expression_statement
+   323                                                       (field_access
+   324                                                       field: (identifier) @field_name
+   325                                                       (#eq? @field_name "{name}"))) @stmt
+   326                                           
+   327                                                   (return_statement
+   328                                                       (field_access
+   329                                                       field: (identifier) @field_name
+   330                                                       (#eq? @field_name "{name}"))) @stmt'''
+   331                                           
+   332                                           
+   333                                                   access_query = JAVA_LANGUAGE.query(field_access_query_str)
+   334                                           
+   335                                                   field_query = JAVA_LANGUAGE.query(field_decl_query_str)
+   336                                           
+   337                                                   for node, capture_name in field_query.captures(tree.root_node):
+   338                                                       if capture_name == "field_value":
+   339                                                           self.removed_nodes.append(node)
+   340                                                           if node.prev_sibling is not None:
+   341                                                               if node.prev_sibling.type == "=":
+   342                                                                   self.removed_nodes.append(node.prev_sibling)
+   343                                           
+   344                                                   for node, capture_name in access_query.captures(tree.root_node):
+   345                                                       if capture_name == "stmt":
+   346                                                           self.removed_nodes.append(node)
+   347                                                   decl_query_str = f'''
+   348                                                       (field_declaration
+   349                                                       declarator: (variable_declarator
+   350                                                           name: (identifier) @field_name
+   351                                                           (#eq? @field_name "{name}")
+   352                                                       )
+   353                                                       ) @decl
+   354                                                       '''
+   355                                                   access_captures = access_query.captures(tree.root_node)
+   356                                                   decl_query = JAVA_LANGUAGE.query(decl_query_str)
+   357                                                   decl_captures = decl_query.captures(tree.root_node)
+   358                                           
+   359                                                   if decl_captures and not access_captures:
+   360                                                       for node, capture_name in decl_captures:
+   361                                                           if capture_name == "decl":
+   362                                                               self.removed_nodes.append(node)            
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: remove_nodes_ at line 366
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   366                                               @profile
+   367                                               def remove_nodes_(self, nodes_to_remove: set):
+   368                                                   self.removed_nodes = []
+   369                                                   self.count += 1
+   370                                                   parser = parsers.get_parser(self.LANGUAGE)
+   371                                                   tree = parser.parse(self.content.encode("utf-8"))
+   372                                                   self.nodes_to_remove = nodes_to_remove
+   373                                                  
+   374                                                   
+   375                                                   for node_to_remove in self.nodes_to_remove:
+   376                                                       node_type = node_to_remove.node_type
+   377                                                       match node_type:
+   378                                                           case "function":
+   379                                                               self.remove_function(node_to_remove,tree)
+   380                                                           case "constructor":
+   381                                                               self.remove_constructor(node_to_remove,tree)
+   382                                                           case "field":
+   383                                                               self.remove_field(node_to_remove,tree)
+   384                                                           case "class":
+   385                                                               self.remove_class(node_to_remove,tree)
+   386                                                       
+   387                                                   return self.delete_nodes(tree)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: find_ancestor at line 388
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   388                                               @profile
+   389                                               def find_ancestor(self,node, typ):
+   390                                                   cur = node.parent
+   391                                                   while cur:
+   392                                                       if cur.type == typ:
+   393                                                           return cur
+   394                                                       cur = cur.parent
+   395                                                   return None
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: node_in_subtree at line 397
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   397                                               @profile
+   398                                               def node_in_subtree(self,target, root):
+   399                                                   if root is None:
+   400                                                       return False
+   401                                                   if target == root:
+   402                                                       return True
+   403                                                   for c in root.children:
+   404                                                       if self.node_in_subtree(target, c):
+   405                                                           return True
+   406                                                   return False
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: is_read_context at line 408
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   408                                               @profile
+   409                                               def is_read_context(self,node):
+   410                                                   decl = self.find_ancestor(node, 'variable_declarator')
+   411                                                   if decl and decl.child_by_field_name('name') == node:
+   412                                                       return False
+   413                                           
+   414                                                   param = self.find_ancestor(node, 'formal_parameter')
+   415                                                   if param and param.child_by_field_name('name') == node:
+   416                                                       return False
+   417                                           
+   418                                                   assign = self.find_ancestor(node, 'assignment_expression')
+   419                                                   if assign:
+   420                                                       left = assign.child_by_field_name('left') or (assign.children[0] if assign.children else None)
+   421                                                       if left and self.node_in_subtree(node, left):
+   422                                                           return False
+   423                                           
+   424                                                   return True
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: replace_field at line 425
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   425                                               @profile
+   426                                               def replace_field(self,node_to_replace,tree):
+   427                                                   name = node_to_replace.name
+   428                                                   access_query= JAVA_LANGUAGE.query(f'''
+   429                                                   ;; Initializers: int z = x; int y = this.x;
+   430                                                   (variable_declarator
+   431                                                       value: (identifier) @use
+   432                                                       (#eq? @use {name}))
+   433                                                   (variable_declarator
+   434                                                       value: (field_access
+   435                                                               field: (identifier) @field_name
+   436                                                               (#eq? @field_name {name})) @use)
+   437                                           
+   438                                                   ;; RHS of assignments: z = x; z = this.x;
+   439                                                   (assignment_expression
+   440                                                       right: (identifier) @use
+   441                                                       (#eq? @use {name}))
+   442                                                   (assignment_expression
+   443                                                       right: (field_access
+   444                                                               field: (identifier) @field_name
+   445                                                               (#eq? @field_name {name})) @use)
+   446                                           
+   447                                                   ;; Argument: approve(x); approve(this.x);
+   448                                                   (argument_list
+   449                                                       (identifier) @use
+   450                                                       (#eq? @use {name}))
+   451                                                   (argument_list
+   452                                                       (field_access
+   453                                                               field: (identifier) @field_name
+   454                                                               (#eq? @field_name {name})) @use)
+   455                                           
+   456                                                   ;; Return: return x; return this.x;
+   457                                                   (return_statement
+   458                                                       (identifier) @use
+   459                                                       (#eq? @use {name}))
+   460                                                   (return_statement
+   461                                                       (field_access
+   462                                                               field: (identifier) @field_name
+   463                                                               (#eq? @field_name {name})) @use)
+   464                                           
+   465                                                   ;; Binary expression: x + y, y + x, this.x + ... 
+   466                                                   (binary_expression
+   467                                                       left: (identifier) @use
+   468                                                       (#eq? @use {name}))
+   469                                                   (binary_expression
+   470                                                       right: (identifier) @use
+   471                                                       (#eq? @use {name}))
+   472                                                   (binary_expression
+   473                                                       left: (field_access
+   474                                                               field: (identifier) @field_name
+   475                                                               (#eq? @field_name {name})) @use)
+   476                                                   (binary_expression
+   477                                                       right: (field_access
+   478                                                               field: (identifier) @field_name
+   479                                                               (#eq? @field_name {name})) @use)
+   480                                                   ''')
+   481                                           
+   482                                           
+   483                                                   decl_query_str = f'''
+   484                                                       (field_declaration
+   485                                                       type: (_) @field_type
+   486                                                       declarator: (variable_declarator
+   487                                                           name: (identifier) @field_name
+   488                                                           (#eq? @field_name "{name}")
+   489                                                       )
+   490                                                       ) @decl
+   491                                                       '''
+   492                                           
+   493                                           
+   494                                                   query = JAVA_LANGUAGE.query(decl_query_str)
+   495                                                   captures = query.captures(tree.root_node) 
+   496                                           
+   497                                                
+   498                                                   field_name = None #used for debugging
+   499                                                   field_type = None
+   500                                                   source_code = tree.text
+   501                                                   code = bytearray(source_code)
+   502                                                   
+   503                                                   for node, cap in captures:
+   504                                                       text = code[node.start_byte:node.end_byte].decode()
+   505                                                       if cap == "field_name":
+   506                                                           field_name = text
+   507                                                       elif cap == "field_type":
+   508                                                           field_type = text
+   509                                                   
+   510                                           
+   511                                                   query = access_query
+   512                                                   captures = query.captures(tree.root_node) #capture access
+   513                                                   nodes_to_replace = []
+   514                                                   for node, cap_name in captures:
+   515                                                       if not self.is_read_context(node): #make sure it's not LHS
+   516                                                           continue
+   517                                                       nodes_to_replace.append(node)
+   518                                           
+   519                                                   return (nodes_to_replace,field_type)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: replace_function at line 522
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   522                                               @profile
+   523                                               def replace_function(self, node_to_replace, tree):
+   524                                           
+   525                                                   name = node_to_replace.name
+   526                                                   source_code = tree.text
+   527                                                   
+   528                                                   decl_query_str = f'''
+   529                                                       (method_declaration type: (_) @return_type 
+   530                                                       name: (identifier) @func_name 
+   531                                                       parameters: (formal_parameters) @params 
+   532                                                       (#eq? @func_name {name} ))'''
+   533                                                   
+   534                                                   decl_query = JAVA_LANGUAGE.query(decl_query_str)
+   535                                                   rt = None
+   536                                                   for node, capture_name in decl_query.captures(tree.root_node):
+   537                                                       if capture_name == "return_type":
+   538                                                           rt = source_code[node.start_byte:node.end_byte].decode("utf-8").strip()
+   539                                                       
+   540                                                   
+   541                                                   call_query_str = f'''
+   542                                                       (method_invocation name: (identifier) @call_name
+   543                                                       arguments: (argument_list) @args 
+   544                                                       #eq? @call_name {name} )) @call'''
+   545                                                   call_query = JAVA_LANGUAGE.query(call_query_str)
+   546                                           
+   547                                                   nodes_to_replace = []
+   548                                                   call_arg_types = {}
+   549                                                   for node, capture_name in call_query.captures(tree.root_node):
+   550                                                       if capture_name == "call":
+   551                                                           nodes_to_replace.append(node)
+   552                                                           arg_list_node = None
+   553                                                           for child in node.children:
+   554                                                               if child.type == "argument_list":
+   555                                                                   arg_list_node = child
+   556                                                                   break
+   557                                                           if arg_list_node:
+   558                                                               arg_types = self.extract_arg_types(arg_list_node) #tried handling overloading here, if failed, just boils down to return type
+   559                                                               arg_types = arg_types if arg_types else rt
+   560                                                           else:
+   561                                                               arg_types = rt
+   562                                                           call_arg_types[node] = arg_types
+   563                                                   return (nodes_to_replace,rt)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: replace_nodes at line 565
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   565                                               @profile
+   566                                               def replace_nodes(self, nodes_to_remove: set):
+   567                                                   return_mapping = {
+   568                                                       "int": "42",
+   569                                                       "boolean": "true",
+   570                                                       "char": "'a'",
+   571                                                       "void": "",
+   572                                                       "Boolean": "true",
+   573                                                       "Integer": "42",
+   574                                                       "String": "\"\"",
+   575                                                       "Object": "null",
+   576                                                       "double": "0.0",
+   577                                                       "float": "0.0f",
+   578                                                       "Double": "0.0",
+   579                                                       "Float": "0.0f",
+   580                                                       "byte": "0",
+   581                                                       "Byte": "0",
+   582                                                       "short": "0",
+   583                                                       "Short": "0",
+   584                                                       "long": "0L",
+   585                                                       "Long": "0L",
+   586                                                       
+   587                                                   }
+   588                                           
+   589                                                   parser = parsers.get_parser(self.LANGUAGE)
+   590                                                   tree = parser.parse(self.content.encode("utf-8"))
+   591                                                   source_code = tree.text
+   592                                                   modified_code = bytearray(source_code)
+   593                                                   self.nodes_to_remove = nodes_to_remove
+   594                                                   nodes_to_replace = []
+   595                                                   mapping = dict()
+   596                                                   for node in self.nodes_to_remove:
+   597                                                       if node.node_type == 'field':
+   598                                                           fields_to_replace = self.replace_field(node,tree)
+   599                                                           nodes_to_replace.append(fields_to_replace)
+   600                                           
+   601                                                       elif node.node_type =='function':
+   602                                                           functions_to_replace = self.replace_function(node,tree)
+   603                                                           nodes_to_replace.append(functions_to_replace)
+   604                                                   for arr,typ in nodes_to_replace:
+   605                                                       for n in arr:
+   606                                                           mapping[n] = typ
+   607                                                   nodes_to_replace = [n for n, _ in nodes_to_replace]
+   608                                                   nodes_to_replace = [item for sub in nodes_to_replace for item in sub]
+   609                                           
+   610                                           
+   611                                                   
+   612                                           
+   613                                                   nodes_to_replace = sorted(set(nodes_to_replace), key=lambda n: n.start_byte, reverse=True)
+   614                                                   nodes_to_replace = self.filter_enclosing_nodes(nodes_to_replace)
+   615                                                   modified_code = bytearray(source_code)
+   616                                           
+   617                                                   for node in nodes_to_replace:
+   618                                                       
+   619                                                       constant_value = return_mapping.get(mapping.get(node, None), None)
+   620                                                       if constant_value is None:
+   621                                                           continue
+   622                                                       replacement_text = constant_value.encode("utf-8")
+   623                                                       start = node.start_byte
+   624                                                       end = node.end_byte
+   625                                                       modified_code[start:end] = replacement_text
+   626                                                   modified_code = modified_code.decode("utf-8")
+   627                                                   tree = parser.parse(modified_code.encode("utf-8"))
+   628                                                   source_code = tree.text
+   629                                                   self.content = modified_code
+   630                                                   return modified_code
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: extract_param_types at line 632
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   632                                               @profile
+   633                                               def extract_param_types(self,params_text):
+   634                                                   #avoid string operations, replace with nodes from the parse tree
+   635                                                   params_text = params_text.strip()
+   636                                                   if params_text.startswith("(") and params_text.endswith(")"):
+   637                                                       inner = params_text[1:-1].strip()
+   638                                                   else:
+   639                                                       inner = params_text
+   640                                                   if not inner:
+   641                                                       return tuple()
+   642                                                   params = [p.strip() for p in inner.split(",")]
+   643                                                   types = []
+   644                                                   for p in params:
+   645                                                       tokens = p.split()
+   646                                                       if tokens:
+   647                                                           types.append(tokens[0])
+   648                                                   return tuple(types)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: get_literal_type at line 650
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   650                                               @profile
+   651                                               def get_literal_type(self,node):
+   652                                           
+   653                                                   typemap = {
+   654                                                       "decimal_integer_literal": "int",
+   655                                                       "boolean_literal": "boolean",
+   656                                                       "character_literal": "char"
+   657                                                   }
+   658                                                   return typemap.get(node.type, None)
+
+Total time: 0 s
+File: /Users/artemancikov/Desktop/practical-work-new/reducer/modifications.py
+Function: extract_arg_types at line 660
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   660                                               @profile
+   661                                               def extract_arg_types(self,arg_list_node):
+   662                                           
+   663                                                   arg_types = []
+   664                                                   for child in arg_list_node.children:
+   665                                                       t = self.get_literal_type(child)
+   666                                                       if t is not None:
+   667                                                           arg_types.append(t)
+   668                                                   return tuple(arg_types)
+
