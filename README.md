@@ -1,6 +1,6 @@
-# Java Program Reducer
+# JREDUCE
 
-A tool for automatically reducing Java programs while preserving specific compilation errors or properties. Uses delta debugging and AST manipulation to find minimal failing test cases.
+Semantic Aware Program Reducer for Java
 
 ## Overview
 
@@ -8,7 +8,6 @@ This project implements a program reduction tool that can:
 - **Remove** declarations (classes, methods, fields, variables)
 - **Replace** code elements with constants/null values
 - **Break inheritance** relationships
-- Preserve compilation errors for debugging
 
 ## Usage
 
@@ -35,11 +34,6 @@ python3 -m main --source-file iter_1/Main.java --script iter_1/run.sh --mode rem
 - **`evaluator.py`**: Runs batch evaluation across multiple test cases
 - **`comparator.py`**: Compares reduction results between different modes
 
-### Key Components
-- `main.py`: Entry point and orchestration
-- `reducer/modifications.py`: AST manipulation and code transformation
-- `reducer/dd.py`: Delta debugging implementation
-- `reducer/graph.py`: Dependency graph construction
 
 ## Reproducing Evaluation Results
 
@@ -54,11 +48,6 @@ python3 -m main --source-file iter_1/Main.java --script iter_1/run.sh --mode rem
 python3 evaluator.py
 ```
 
-This will:
-- Execute all three modes (remove, replace, removereplace)
-- Save results to timestamped directories
-- Generate comprehensive logs
-- Preserve intermediate states
 
 ### 3. Analyze Results
 ```bash
@@ -79,9 +68,3 @@ evaluation_results_YYYYMMDD_HHMMSS/
 ├── replace_mode_results/
 └── removereplace_mode_results/
 ```
-
-## Requirements
-- Python 3.7+
-- Java compiler (javac)
-- tree-sitter library
-- Dependencies: `pip install -r requirements.txt`
