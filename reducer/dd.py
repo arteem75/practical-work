@@ -1,6 +1,7 @@
 import os
 import string
 import random
+# import time
 
 import networkx as nx
 import picire
@@ -76,7 +77,16 @@ class Interesting():
             temp_file_path = f"{name}.java" #TODO: change this to java
         with open(temp_file_path, 'w') as temp_file:
             temp_file.write(modified_content)
+        
+        # print(f"Starting timer for test script invocation on file: {temp_file_path}")
+        # script_start_time = time.time()
+        
         output = self.prop_checker.run_test_script(temp_file_path)
+        
+        # script_end_time = time.time()
+        # script_runtime = script_end_time - script_start_time
+        # print(f"Test script invocation completed in {script_runtime:.6f} seconds")
+        # print("\n\n")
        
         if output is not None:
             if output == 0:
@@ -152,13 +162,14 @@ def perform_dd(interesting, node_filter, parallel: bool = True):
         )
     )
     output_nodes = [x for x in dd_obj(nodes)]
+    """
     interesting.update_graph(
         [f for f in nodes if f not in output_nodes],
         remove_contracts=False
     )
-    
+    """
     
     
 
     interesting.reset_state()
-  
+

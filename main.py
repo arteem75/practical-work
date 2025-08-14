@@ -44,7 +44,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--mode",
-    choices=["remove", "replace"],
+    choices=["remove", "replace", "removereplace"],
     default="remove",
     help="Choose 'remove' to only delete nodes, or 'replace' to first replace then remove.")
 args = parser.parse_args()
@@ -72,56 +72,209 @@ def main():
     ]
     interesting.option = "break"
     for pass_ in passes_class:
+        # print(f"Starting timer for pass {pass_} in mode 'break'")
+        # pass_start_time = time.time()
+        
+        graph = build_graph_from_file(file_path, args.language)
+            
+        interesting.graph = graph
         interesting.mode = pass_
         perform_dd(interesting, lambda n: n.node_type in pass_,
                    parallel=True)
+        
+        # pass_end_time = time.time()
+        # pass_runtime = pass_end_time - pass_start_time
+        # print(f"Pass {pass_} in mode 'break' completed in {pass_runtime:.6f} seconds")
+        # print("\n\n")
+        
+    graph = build_graph_from_file(file_path, args.language)
+            
+    interesting.graph = graph
+    
+  
     # if replace mode, do the replace-loop next
     fixed_point_reached = False
-    if args.mode == "replace":
-        passes = [["function"], ["field"]]
+    if args.mode == "removereplace":
+        passes = [["function"], ["field"], ["local_variable"]]
         interesting.option = "replace"
         
         counter = 0
 
         while not fixed_point_reached:
+            # print(f"Starting timer for replace iteration {counter + 1}")
+            # iteration_start_time = time.time()
+            
             old = utils.read_file(file_path)
             for pass_ in passes:
+                # print(f"Starting timer for pass {pass_} in mode 'replace' (iteration {counter + 1})")
+                # pass_start_time = time.time()
+                
+                graph = build_graph_from_file(file_path, args.language)
+            
+                interesting.graph = graph
                 interesting.mode = pass_
                 perform_dd(interesting, lambda n: n.node_type in pass_, parallel=True)
+                
+                # pass_end_time = time.time()
+                # pass_runtime = pass_end_time - pass_start_time
+                # print(f"Pass {pass_} in mode 'replace' (iteration {counter + 1}) completed in {pass_runtime:.6f} seconds")
+                # print("\n\n")
+                
             new = utils.read_file(file_path)
             fixed_point_reached = (old == new)
             counter += 1
+            
+            # iteration_end_time = time.time()
+            # iteration_runtime = iteration_end_time - iteration_start_time
+            # print(f"Replace iteration {counter} completed in {iteration_runtime:.6f} seconds")
+            # print("\n\n")
+            
         print("Number of replace iterations:", counter)
-    passes = [
-    ["function"],
-    ["constructor"],
-    ["field"],
-    ["class"]
-    ]
-    fixed_point_reached = False
-    interesting.option = "remove"
-    graph = build_graph_from_file(file_path, args.language)
-    interesting.graph = graph
-    while not fixed_point_reached:
-        old_content = utils.read_file(file_path)
-        
-        for pass_ in passes:
-            
-            graph = build_graph_from_file(file_path, args.language)
-            
-            interesting.graph = graph
-            
-            interesting.mode = pass_
-            perform_dd(interesting, lambda n: n.node_type in pass_,
-                    parallel=True)
-        new_content = utils.read_file(file_path)
-        if old_content == new_content:
-            fixed_point_reached = True
-    
 
+    
+        passes = [
+        ["local_variable"],
+        ["function"],
+        ["constructor"],
+        ["field"],
+        ["class"],
+        ["local_variable", "function","field"]
+
+        ]
+        fixed_point_reached = False
+        graph = build_graph_from_file(file_path, args.language)
+        prop_checker = BasicPropertyChecker(file_path, args.script)
+        content = utils.read_file(file_path)
+        interesting = Interesting(graph, content,
+                                prop_checker, args.language)
+        interesting.option = "remove"
+        
+        remove_iteration_counter = 0
+        
+        while not fixed_point_reached:
+            remove_iteration_counter += 1
+            # print(f"Starting timer for remove iteration {remove_iteration_counter}")
+            # iteration_start_time = time.time()
+            
+            old_content = utils.read_file(file_path)
+            
+            for pass_ in passes:
+                # print(f"Starting timer for pass {pass_} in mode 'remove' (iteration {remove_iteration_counter})")
+                # pass_start_time = time.time()
+                
+                graph = build_graph_from_file(file_path, args.language)
+                prop_checker = BasicPropertyChecker(file_path, args.script)
+                content = utils.read_file(file_path)
+                interesting = Interesting(graph, content,
+                                        prop_checker, args.language)
+                interesting.mode = pass_
+                perform_dd(interesting, lambda n: n.node_type in pass_,
+                        parallel=False)
+                
+                # pass_end_time = time.time()
+                # pass_runtime = pass_end_time - pass_start_time
+                # print(f"Pass {pass_} in mode 'remove' (iteration {remove_iteration_counter}) completed in {pass_runtime:.6f} seconds")
+                # print("\n\n")
+                
+            new_content = utils.read_file(file_path)
+            if old_content == new_content:
+                fixed_point_reached = True
+                
+            # iteration_end_time = time.time()
+            # iteration_runtime = iteration_end_time - iteration_start_time
+            # print(f"Remove iteration {remove_iteration_counter} completed in {iteration_runtime:.6f} seconds")
+            # print("\n\n")
+    elif args.mode == "remove":
+        passes = [
+        ["local_variable"],
+        ["function"],
+        ["constructor"],
+        ["field"],
+        ["class"],
+
+        ]
+        fixed_point_reached = False
+        graph = build_graph_from_file(file_path, args.language)
+        prop_checker = BasicPropertyChecker(file_path, args.script)
+        content = utils.read_file(file_path)
+        interesting = Interesting(graph, content,
+                                prop_checker, args.language)
+        interesting.option = "remove"
+        
+        remove_iteration_counter = 0
+        
+        while not fixed_point_reached:
+            remove_iteration_counter += 1
+            # print(f"Starting timer for remove iteration {remove_iteration_counter}")
+            # iteration_start_time = time.time()
+            
+            old_content = utils.read_file(file_path)
+            
+            for pass_ in passes:
+                # print(f"Starting timer for pass {pass_} in mode 'remove' (iteration {remove_iteration_counter})")
+                # pass_start_time = time.time()
+                
+                graph = build_graph_from_file(file_path, args.language)
+                prop_checker = BasicPropertyChecker(file_path, args.script)
+                content = utils.read_file(file_path)
+                interesting = Interesting(graph, content,
+                                        prop_checker, args.language)
+                interesting.mode = pass_
+                perform_dd(interesting, lambda n: n.node_type in pass_,
+                        parallel=False)
+                
+                # pass_end_time = time.time()
+                # pass_runtime = pass_end_time - pass_start_time
+                # print(f"Pass {pass_} in mode 'remove' (iteration {remove_iteration_counter}) completed in {pass_runtime:.6f} seconds")
+                # print("\n\n")
+                
+            new_content = utils.read_file(file_path)
+            if old_content == new_content:
+                fixed_point_reached = True
+                
+            # iteration_end_time = time.time()
+            # iteration_runtime = iteration_end_time - iteration_start_time
+            # print(f"Remove iteration {remove_iteration_counter} completed in {iteration_runtime:.6f} seconds")
+            # print("\n\n")
+
+    elif args.mode == "replace":
+        passes = [["function"], ["field"], ["local_variable"]]
+        interesting.option = "replace"
+        
+        counter = 0
+
+        while not fixed_point_reached:
+            # print(f"Starting timer for replace iteration {counter + 1}")
+            # iteration_start_time = time.time()
+            
+            old = utils.read_file(file_path)
+            for pass_ in passes:
+                # print(f"Starting timer for pass {pass_} in mode 'replace' (iteration {counter + 1})")
+                # pass_start_time = time.time()
+                
+                graph = build_graph_from_file(file_path, args.language)
+            
+                interesting.graph = graph
+                interesting.mode = pass_
+                perform_dd(interesting, lambda n: n.node_type in pass_, parallel=True)
+                
+                # pass_end_time = time.time()
+                # pass_runtime = pass_end_time - pass_start_time
+                # print(f"Pass {pass_} in mode 'replace' (iteration {counter + 1}) completed in {pass_runtime:.6f} seconds")
+                # print("\n\n")
+                
+            new = utils.read_file(file_path)
+            fixed_point_reached = (old == new)
+            counter += 1
+            
+            # iteration_end_time = time.time()
+            # iteration_runtime = iteration_end_time - iteration_start_time
+            # print(f"Replace iteration {counter} completed in {iteration_runtime:.6f} seconds")
+            # print("\n\n")
+            
+        print("Number of replace iterations:", counter)
 
    
-    #one last pass
     end_time = time.time()
     # Calculate the elapsed time
     elapsed_time = end_time - start_time
@@ -133,15 +286,9 @@ if __name__ == "__main__":
     main()
 
 """
-refactor it to iterate until fixed point is reached 
-maybe try heuristics on class removal, but keep it lightweight
-
-improve the tool by for example using constants by calling replace_nodes
+replacement should only remove the declaration and replace the usages
+for constructors: replace expressions like new Object() with null
 
 
-experiments:
-1) run perses on these test programs (track number of tokens + test reduction time)
-2) run jreduce and measure time, give the outcome of jreduce to perses; measure number of tokens + overall time (jreduce + perses)
-3) compare the numbers of jreduce+perses to vanilla perses
+
 """
-

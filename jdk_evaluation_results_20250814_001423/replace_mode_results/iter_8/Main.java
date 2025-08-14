@@ -1,0 +1,466 @@
+package src.plant;
+
+class Main {
+  static public final Quested<Integer, String, Function1<String, String>> infernos(double mongered, Quested<Short, Double, ? extends Function1<Double, Double>> voyeurs) {
+    Quested<Integer, String, Function1<String, String>> lasagna = Main.infernos(61.61, null);
+    return lasagna;
+    
+  }
+
+  static public final void dirties(Byte calm) {
+    final int evans = -84;
+    Object x_2 = evans;
+    
+  }
+
+  static public final Function3<? super Boolean, ? super Byte, Byte, Short> weeded() {
+return (Boolean lochinvar, Byte inching, Byte avenues) -> {      return (short)-30;};
+  }
+
+  static public final Smartens<Dwight, ? super Byte> railway() {
+    return new Smartens<Dwight, Byte>();
+  }
+
+  static public final Meddling<Long, Long> raciness(Bluff<String> reformers, Integer... xanadu) {
+    final Immorally orderlies = (Immorally) null;
+    Immorally town = ((true) ?
+      orderlies : 
+       (Immorally) null);
+    Immorally pees = (Immorally) null;
+    town = pees;
+    return town.roping;
+    
+  }
+
+  static Boolean trekkie = true;
+
+  static final Cums<String, Long> duteous = (Cums<String, Long>) null;
+
+  static final Cums<String, Long> agreeable = Main.duteous;
+
+  static long breasting = Main.raciness(  ((Main.trekkie) ?
+  Main.duteous : 
+   Main.agreeable).capers(null,   ((true) ?
+  new Shriner<>("swears") : 
+   new Shriner<>("locke")))).estimator;
+
+  static final Double priestley = ((Main.trekkie) ?
+  ((Generics) null).snafus : 
+     ((false) ?
+  (Dooms<Integer, String>) null : 
+   (Dooms<Integer, String>) null).caddie());
+
+  static final Cums<? extends String, ? super Long> altered = Main.duteous;
+
+  static public final Character amati(Meddling<Double, ? super Long> roweling, Character inbox) {
+    final Character inferno = 'd';
+    Main.breasting = Main.breasting;
+    return inferno;
+    
+  }
+
+  static Wrap<Byte, Quested<Byte, Byte, Function1<Byte, Byte>>> deflected = new Meddling<Integer, Long>((long)-20, 79);
+}
+
+interface Function0<R> {
+  public R apply();
+}
+
+interface Function1<A1, R> {
+  public R apply(A1 a1);
+}
+
+interface Function2<A1, A2, R> {
+  public R apply(A1 a1, A2 a2);
+}
+
+interface Function3<A1, A2, A3, R> {
+  public R apply(A1 a1, A2 a2, A3 a3);
+}
+
+
+
+class Bluff<C extends String> {
+  public final float demurely() {
+    final float martens = (float)-86.620;
+    final double teacups = 14.244;
+    Function1<C, Function1<String, String>> pheasants = (snipes) -> {
+      final Dwight lieberman = (Dwight) null;
+      Function1<String, String> cupcakes = lieberman.ensconces;
+      Byte dunk = (byte)-39;
+      Main.dirties(dunk);
+      return cupcakes;
+      
+    };
+    Main.infernos(teacups, null).malware(pheasants.apply(new Sprucest<>((C) null).rared));
+    return martens;
+    
+  }
+
+  public final Quested<Long, Double, Function1<Double, Double>> agonizing(C notably) {
+    final Boolean minutemen = true;
+    Dooms<C, C> populous = (Dooms<C, C>) null;
+    Dooms<C, C> harridans = (Dooms<C, C>) null;
+    Function2<C, C, Void> redraws = (hustling, sindhi) -> {
+      C pluralize = (C) null;
+      Shriner<C, Double> dune = new Shriner<C, Double>(pluralize);
+      Boggling<? super Quested<Double, Byte, Function1<Byte, Byte>>, C, ? super C> spittoon = ((Culled<Integer, C>) null).impassive;
+      spittoon.paperboys = minutemen;
+      Object x_0 = dune.pensive;
+      return null;
+    };
+    redraws.apply(  ((false) ?
+  (C) null : 
+   (C) null), (C) null);
+      return ((minutemen) ?
+  populous : 
+   harridans).moused.goth(null,   ((true) ?
+  (C) null : 
+   (C) null)).noah;
+    
+  }
+}
+
+final class Quested<X, W, A extends Function1<W, ? extends W>> {
+  public A incloses;
+
+  public Quested(A incloses) {
+    this.incloses = incloses;
+  }
+
+  public final void malware(A repairmen) {
+    Object x_1 = (byte)47;
+    
+  }
+}
+
+abstract class Dwight {
+  public final Function1<String, String> ensconces;
+  public final Integer fanboy;
+
+  public Dwight(Function1<String, String> ensconces,Integer fanboy) {
+    this.ensconces = ensconces;
+    this.fanboy = fanboy;
+  }
+
+  public abstract long hutu(Integer capstan) ;
+
+  public Boolean dowelled(long airwaves, Number alsace) {
+    return true;
+  }
+}
+
+final class Sprucest<B extends String> extends Dwight {
+  public final B rared;
+
+  public Sprucest(B rared) {
+    super((String psycho) -> { return "hauling";}, 91);
+    this.rared = rared;
+  }
+
+  public long hutu(Integer capstan) {
+    long congaing = (long)41;
+    Function0<Void> badness = () -> {
+      Object x_3 = (float)-54.112;
+      return null;
+    };
+    badness.apply();
+    return congaing;
+    
+  }
+
+  public final Boolean dowelled(long airwaves, Number alsace) {
+    final Boolean cuban = false;
+    return cuban;
+    
+  }
+}
+
+abstract class Cordoning<B extends Boolean, M> extends Dwight {
+  public final Quested<Long, Double, Function1<Double, Double>> noah;
+  public Long[] doritos;
+
+  public Cordoning(Quested<Long, Double, Function1<Double, Double>> noah,Long[] doritos) {
+    super((String fractured) -> { return "wrestle";}, 66);
+    this.noah = noah;
+    this.doritos = doritos;
+  }
+
+  public Boolean dowelled(long airwaves, Number alsace) {
+    Boolean trailed = false;
+    final Long trusting = (long)-19;
+    final Long[] postal = (Long[]) new Object[]{trusting, (long)60};
+    doritos = postal;
+    return trailed;
+    
+  }
+
+  public abstract boolean dram(B molded, boolean facetted) ;
+}
+
+final class Boggling<E extends Quested<? super Double, Byte, ? super Function1<Byte, Byte>>, J extends String, Z extends J> extends Cordoning<Boolean, Z> {
+  public final E whet;
+  public Boolean paperboys;
+
+  public Boggling(E whet,Boolean paperboys) {
+    super(new Quested<Long, Double, Function1<Double, Double>>((Double privater) -> { return 72.283;}), (Long[]) new Object[]{(long)8});
+    this.whet = whet;
+    this.paperboys = paperboys;
+  }
+
+  public final Cordoning<Boolean, J> goth(Function2<Z, ? super E, J> luncheon, Z plumper) {
+    return (Cordoning<Boolean, J>) null;
+  }
+
+  public long hutu(Integer capstan) {
+    long maimed = (long)82;
+    Porridge<Function2<Long, Boolean, Character>> termites = (Porridge<Function2<Long, Boolean, Character>>) null;
+    termites.phaedra();
+    return maimed;
+    
+  }
+
+  public boolean dram(Boolean molded, boolean facetted) {
+    boolean superbest = true;
+    paperboys = false;
+    return superbest;
+    
+  }
+}
+
+interface Porridge<I extends Function2<Long, Boolean, Character>> {
+  public abstract void phaedra() ;
+}
+
+abstract class Dooms<J, A extends String> implements Porridge<Function2<Long, Boolean, Character>> {
+  public Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, A, A> moused;
+  public Function0<Character> igor;
+
+  public Dooms(Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, A, A> moused,Function0<Character> igor) {
+    super();
+    this.moused = moused;
+    this.igor = igor;
+  }
+
+  public void phaedra() {
+    Object x_4 = (A) null;
+    
+  }
+
+  public Double caddie() {
+    return -57.630;
+  }
+}
+
+final class Shriner<G extends String, U> extends Dwight {
+  public final G pensive;
+
+  public Shriner(G pensive) {
+    super((String discords) -> { final String shagged = "buggiest"; Function1<Byte, Byte> cadres = (Byte oneness) -> { return (byte)-85;}; final Boolean alpha = false; new Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, String, String>(new Quested<Double, Byte, Function1<Byte, Byte>>(cadres), alpha).paperboys = false; return shagged; }, -21);
+    this.pensive = pensive;
+  }
+
+  public long hutu(Integer capstan) {
+    return (long)-50;
+  }
+
+  public final Boolean dowelled(long airwaves, Number alsace) {
+    return true;
+  }
+}
+
+abstract class Culled<D, I extends String> extends Cordoning<Boolean, I> {
+  public final Boggling<? super Quested<Double, Byte, Function1<Byte, Byte>>, I, ? super I> impassive;
+  public char paramedic;
+
+  public Culled(Boggling<? super Quested<Double, Byte, Function1<Byte, Byte>>, I, ? super I> impassive,char paramedic) {
+    super(new Quested<Long, Double, Function1<Double, Double>>((Double played) -> { return 24.510;}), (Long[]) new Object[]{(long)-67});
+    this.impassive = impassive;
+    this.paramedic = paramedic;
+  }
+
+  public D thatching() {
+    return (D) null;
+  }
+}
+
+abstract class Wrap<N extends Byte, K extends Quested<N, N, ? extends Function1<N, N>>> extends Culled<K, String> {
+  public final Boggling<? super Quested<Double, Byte, Function1<Byte, Byte>>, String, ? super String> impassive;
+
+  public Wrap(Boggling<? super Quested<Double, Byte, Function1<Byte, Byte>>, String, ? super String> impassive) {
+    super(new Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, String, String>(new Quested<Double, Byte, Function1<Byte, Byte>>((Byte corpus) -> { Function2<Wrap<? extends Byte, Quested<Byte, Byte, Function1<? extends Byte, ? extends Byte>>>, N, Smartens<K, K>> antivirus = (sprite, plotted) -> { Smartens<K, K> denounce = new Smartens<K, K>(); final Cordoning<Boolean, N> linden = (Cordoning<Boolean, N>) null; Long analogues = (long)12; linden.doritos = (Long[]) new Object[]{analogues, (long)63, (long)51}; return denounce; }; N concern = (N) null; Byte fields = antivirus.apply(null, concern).signaling(null); Function1<String, String> grandiose = (String tube) -> { String cactuses = "herod"; final Function0<Character> formal = () -> { Character route = 'Q'; return route; }; ((Dooms<Float, String>) null).igor = formal; return cactuses; }; new Quested<Number, String, Function1<String, String>>(grandiose).incloses = ((Culled<Number, String>) null).ensconces; return fields; }), true), 'B');
+    this.impassive = impassive;
+  }
+
+  public K thatching() {
+    return (K) null;
+  }
+
+  public N died(Boolean surrogate, N picks) {
+    N banquet = (N) null;
+    new Manicure(new Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, String, String>(new Quested<>(new Jeeves<K, N>((K) null)::enhance), false), (Character[]) new Object[]{(Character) null, (Character) null, (Character) null}).legging();
+    return banquet;
+    
+  }
+}
+
+final class Smartens<U, J> extends Bluff<String> {
+  public Smartens() {
+    super();
+}
+
+  public final Byte signaling(Bluff<? super String> norbert) {
+    return (byte)25;
+  }
+
+  public final Function1<? super Integer, ? extends Double> washed(Function1<? super Integer, ? extends Double> urge, Porridge<? extends Function2<Long, Boolean, Character>> convened) {
+return (Integer auxiliary) -> {
+      Double alumna = (Double) null;
+      return alumna;
+      
+    };
+  }
+}
+
+class Manicure extends Culled<Object, String> {
+  public final Boggling<? super Quested<Double, Byte, Function1<Byte, Byte>>, String, ? super String> impassive;
+  public final Character[] clergies;
+
+  public Manicure(Boggling<? super Quested<Double, Byte, Function1<Byte, Byte>>, String, ? super String> impassive,Character[] clergies) {
+    super(new Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, String, String>(new Quested<Double, Byte, Function1<Byte, Byte>>((Byte kafka) -> { return (byte)-31;}), true), 'X');
+    this.impassive = impassive;
+    this.clergies = clergies;
+  }
+
+  public void legging() {
+    Object x_5 = (short)19;
+    
+  }
+
+  public long hutu(Integer capstan) {
+    final long aiken = (long)-19;
+    final long scares = (long)11;
+    long phaethon = ((true) ?
+      aiken : 
+       scares);
+    return phaethon;
+    
+  }
+
+  public boolean dram(Boolean molded, boolean facetted) {
+    boolean finland = molded;
+    return finland;
+    
+  }
+}
+
+final class Jeeves<E, X> implements Porridge<Function2<Long, Boolean, Character>> {
+  public E legato;
+
+  public Jeeves(E legato) {
+    super();
+    this.legato = legato;
+  }
+
+  public final Byte enhance(Byte packs) {
+    final Byte eighteen = (byte)77;
+    E ridgepole = (E) null;
+    legato = ridgepole;
+    return eighteen;
+    
+  }
+
+  public void phaedra() {
+    Object x_6 = (E) null;
+    
+  }
+}
+
+class Meddling<G, Y extends Long> extends Wrap<Byte, Quested<Byte, Byte, Function1<Byte, Byte>>> {
+  public final long estimator;
+  public final G lullaby;
+
+  public Meddling(long estimator,G lullaby) {
+    super(new Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, String, String>(new Quested<Double, Byte, Function1<Byte, Byte>>((Byte wad) -> { return (byte)40;}), false));
+    this.estimator = estimator;
+    this.lullaby = lullaby;
+  }
+
+  public long hutu(Integer capstan) {
+    final long cypher = ((Meddling<Culled<Object, String>, Long>) null).estimator;
+    return cypher;
+    
+  }
+
+  public boolean dram(Boolean molded, boolean facetted) {
+    Y scanties = (Y) null;
+    boolean bewailing = (scanties != (Y) null);
+    return bewailing;
+    
+  }
+}
+
+abstract class Immorally extends Bluff<String> {
+  public final Meddling<Long, Long> roping;
+
+  public Immorally(Meddling<Long, Long> roping) {
+    super();
+    this.roping = roping;
+  }
+}
+
+abstract class Cums<J extends String, Q extends Long> extends Wrap<Byte, Quested<Byte, Byte, Function1<Byte, Byte>>> {
+  public final J simple;
+  public final Sprucest<? extends J> customary;
+
+  public Cums(J simple,Sprucest<? extends J> customary) {
+    super(new Boggling<Quested<Double, Byte, Function1<Byte, Byte>>, String, String>(new Quested<Double, Byte, Function1<Byte, Byte>>((Byte vixenish) -> { final Byte rewording = (byte)12; final Culled<Short, ? super String> specs = (Culled<Short, String>) null; specs.paramedic = 'A'; return rewording; }), false));
+    this.simple = simple;
+    this.customary = customary;
+  }
+
+  public abstract Immorally capers(Jeeves<? extends Immorally, ? super Double> dodgers, Shriner<String, Double> rhodium) ;
+}
+
+abstract class Generics extends Immorally {
+  public final Double snafus;
+
+  public Generics(Double snafus) {
+    super(new Meddling<Long, Long>((long)-74, (long)90));
+    this.snafus = snafus;
+  }
+}
+
+final class Axiomatic<W> extends Generics {
+  public W amassing;
+
+  public Axiomatic(W amassing) {
+    super(-20.441);
+    this.amassing = amassing;
+  }
+
+  public final W depletes(W duse, W remarries) {
+    final Boolean muffle = true;
+    final W iterating = (W) null;
+    Boolean babier = false;
+      ((babier) ?
+  (Bend) null : 
+   (Bend) null).nimitz(null);
+    return ((muffle) ?
+      amassing : 
+       iterating);
+    
+  }
+
+  public final W overage() {
+    W amicable = (W) null;
+    return amicable;
+    
+  }
+}
+
+interface Bend extends Porridge<Function2<Long, Boolean, Character>> {
+  public abstract void nimitz(Smartens<Character, ? super Long> parked) ;
+
+  public abstract float shampoos(float cucumbers, Cordoning<? extends Boolean, Double> cribbage) ;
+}

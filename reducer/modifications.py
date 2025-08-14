@@ -1,5 +1,6 @@
 from abc import abstractmethod
 from tree_sitter import Language, Parser
+# import time
 
 import networkx as nx
 try:
@@ -34,6 +35,8 @@ class JavaDeclarationRemoval(ASTRemoval):
     def __init__(self, content, graph):
         super().__init__(content, graph)
         self.removed_nodes = []
+        self.parser = parsers.get_parser(self.LANGUAGE)
+        self.tree = self.parser.parse(content.encode("utf-8"))
 
     
     def visit_default(self, node):
@@ -42,8 +45,18 @@ class JavaDeclarationRemoval(ASTRemoval):
     
     def exit_default(self, node):
         pass
+
+    def update_tree_incrementally(self, new_content):
+        old_tree = self.tree
+        self.content = new_content
+        self.tree = self.parser.parse(
+            new_content.encode("utf-8"),
+            old_tree=old_tree  
+        )
     
-    def delete_nodes(self, tree):
+    def delete_nodes(self, tree=None):
+        if tree is None:
+            tree = self.tree
         self.removed_nodes = self.filter_enclosing_nodes(self.removed_nodes) #remove duplicates and nested nodes
         self.removed_nodes.sort(key=lambda node: node.start_byte, reverse=True)
         source_code = tree.text
@@ -56,9 +69,11 @@ class JavaDeclarationRemoval(ASTRemoval):
             start = node.start_byte
             end = node.end_byte
             del modified_code[start:end]
-       
-        #print(modified_code.decode("utf-8"))
-        return modified_code.decode("utf-8")
+
+        modified_content = modified_code.decode("utf-8")
+        #self.update_tree_incrementally(modified_content)
+
+        return modified_content
 
     
     def get_node_visitor(self, node):
@@ -86,6 +101,9 @@ class JavaDeclarationRemoval(ASTRemoval):
         return result
     
     def break_inheritance(self, nodes_to_remove: set):
+        # print(f"Starting timer in method break_inheritance")
+        # start_time = time.time()
+    
         parser = parsers.get_parser(self.LANGUAGE)
         tree = parser.parse(self.content.encode("utf-8"))
         #self.visit_super_calls(tree)
@@ -127,7 +145,15 @@ class JavaDeclarationRemoval(ASTRemoval):
                                 ctor_field = statement.child_by_field_name("constructor")
                                 if ctor_field and ctor_field.type == "super":
                                     self.removed_nodes.append(statement)
-        return self.delete_nodes(tree)
+    
+        result = self.delete_nodes(tree)
+    
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method break_inheritance completed in {runtime:.6f} seconds")
+        # print("\n\n")
+    
+        return result
 
     
     def visit_super_calls(self, tree):
@@ -198,11 +224,25 @@ class JavaDeclarationRemoval(ASTRemoval):
                         current_node = current_node.parent
     
     def remove_nodes(self, nodes_to_remove: set, replace=False):
+        # print(f"Starting timer in method remove_nodes")
+        # start_time = time.time()
+        
         if replace:
-            return self.replace_nodes(nodes_to_remove)
+            result = self.replace_nodes(nodes_to_remove)
         else:
-            return self.remove_nodes_(nodes_to_remove)
+            result = self.remove_nodes_(nodes_to_remove)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method remove_nodes completed in {runtime:.6f} seconds")
+        # print("\n\n")
+        
+        return result
+
     def remove_local_variable(self, node_to_remove, tree):
+        # print(f"Starting timer in method remove_local_variable")
+        # start_time = time.time()
+        
         name = node_to_remove.name
         decl_q = JAVA_LANGUAGE.query(f"""
         (local_variable_declaration
@@ -216,7 +256,6 @@ class JavaDeclarationRemoval(ASTRemoval):
             if cap == "decl":
                 self.removed_nodes.append(n)
 
-        # 2) remove any statement that mentions it
         id_q = JAVA_LANGUAGE.query(f"""
         (identifier) @id (#eq? @id "{name}")
         """)
@@ -225,7 +264,16 @@ class JavaDeclarationRemoval(ASTRemoval):
                 stmt = self.find_ancestor(n, 'statement')
                 if stmt:
                     self.removed_nodes.append(stmt)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method remove_local_variable completed in {runtime:.6f} seconds")
+        # print("\n\n")
+
     def remove_class(self, node_to_remove, tree):
+        # print(f"Starting timer in method remove_class")
+        # start_time = time.time()
+        
         name = node_to_remove.name
 
         query = JAVA_LANGUAGE.query(f"""
@@ -251,6 +299,10 @@ class JavaDeclarationRemoval(ASTRemoval):
                     class_node = node
                     break
         if class_node is None:
+            # end_time = time.time()
+            # runtime = end_time - start_time
+            # print(f"Method remove_class completed in {runtime:.6f} seconds")
+            # print("\n\n")
             return
 
        
@@ -275,9 +327,17 @@ class JavaDeclarationRemoval(ASTRemoval):
         for node, cap in usage_query.captures(tree.root_node):
             if cap in {"expr", "stmt"}:
                 self.removed_nodes.append(node)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method remove_class completed in {runtime:.6f} seconds")
+        # print("\n\n")
 
     
     def remove_function(self, node_to_remove,tree):
+        # print(f"Starting timer in method remove_function")
+        # start_time = time.time()
+        
         name = node_to_remove.name
         method_query_str = f'''(method_declaration name: (identifier) @func_name (#eq? @func_name "{name}")) @method'''
         
@@ -313,19 +373,35 @@ class JavaDeclarationRemoval(ASTRemoval):
         for node, capture_name in call_query.captures(tree.root_node):
             if capture_name == "call":
                 self.removed_nodes.append(node)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method remove_function completed in {runtime:.6f} seconds")
+        # print("\n\n")
 
 
     
     def remove_constructor(self, node_to_remove, tree):
+        # print(f"Starting timer in method remove_constructor")
+        # start_time = time.time()
+        
         name = node_to_remove.name
         constructor_query_str = f'''(constructor_declaration name: (identifier) @ctor_name (#eq? @ctor_name "{name}")) @ctor'''
         constructor_query = JAVA_LANGUAGE.query(constructor_query_str)
         for node, capture_name in constructor_query.captures(tree.root_node):
             if capture_name == "ctor":
                 self.removed_nodes.append(node)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method remove_constructor completed in {runtime:.6f} seconds")
+        # print("\n\n")
 
     
     def remove_field(self, node_to_remove, tree):
+        # print(f"Starting timer in method remove_field")
+        # start_time = time.time()
+        
         name = node_to_remove.name
         field_decl_query_str = f'''( (field_declaration declarator: (variable_declarator name: (identifier) @field_name value: (_) @field_value ) ) (#eq? @field_name "{name}") )'''
         field_query = JAVA_LANGUAGE.query(field_decl_query_str)
@@ -377,12 +453,20 @@ class JavaDeclarationRemoval(ASTRemoval):
         if decl_captures and not access_captures:
             for node, capture_name in decl_captures:
                 if capture_name == "decl":
-                    self.removed_nodes.append(node)            
+                    self.removed_nodes.append(node)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method remove_field completed in {runtime:.6f} seconds")
+        # print("\n\n")
 
             
         
     
     def remove_nodes_(self, nodes_to_remove: set):
+        # print(f"Starting timer in method remove_nodes_")
+        # start_time = time.time()
+        
         self.removed_nodes = []
         self.count += 1
         parser = parsers.get_parser(self.LANGUAGE)
@@ -403,8 +487,15 @@ class JavaDeclarationRemoval(ASTRemoval):
                     self.remove_class(node_to_remove,tree)
                 case "local_variable":
                     self.remove_local_variable(node_to_remove, tree)
-            
-        return self.delete_nodes(tree)
+        
+        result = self.delete_nodes(tree)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method remove_nodes_ completed in {runtime:.6f} seconds")
+        # print("\n\n")
+        
+        return result
     
     def find_ancestor(self,node, typ):
         cur = node.parent
@@ -444,6 +535,9 @@ class JavaDeclarationRemoval(ASTRemoval):
         return True
     
     def replace_field(self,node_to_replace,tree):
+        # print(f"Starting timer in method replace_field")
+        # start_time = time.time()
+        
         name = node_to_replace.name
         access_query= JAVA_LANGUAGE.query(f'''
         ;; Initializers: int z = x; int y = this.x;
@@ -536,11 +630,20 @@ class JavaDeclarationRemoval(ASTRemoval):
                 continue
             nodes_to_replace.append(node)
 
-        return (nodes_to_replace,field_type)
+        result = (nodes_to_replace,field_type)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method replace_field completed in {runtime:.6f} seconds")
+        # print("\n\n")
+        
+        return result
        
             
     
     def replace_function(self, node_to_replace, tree):
+        # print(f"Starting timer in method replace_function")
+        # start_time = time.time()
 
         name = node_to_replace.name
         source_code = tree.text
@@ -559,9 +662,14 @@ class JavaDeclarationRemoval(ASTRemoval):
             
         
         call_query_str = f'''
-            (method_invocation name: (identifier) @call_name
-            arguments: (argument_list) @args 
-            #eq? @call_name {name} )) @call'''
+        (
+        (method_invocation
+            name: (identifier) @call_name (#eq? @call_name "{name}")
+            arguments: (argument_list) @args
+        ) @call
+        )
+        '''
+
         call_query = JAVA_LANGUAGE.query(call_query_str)
 
         nodes_to_replace = []
@@ -580,14 +688,25 @@ class JavaDeclarationRemoval(ASTRemoval):
                 else:
                     arg_types = rt
                 call_arg_types[node] = arg_types
-        return (nodes_to_replace,rt)
+        
+        result = (nodes_to_replace,rt)
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method replace_function completed in {runtime:.6f} seconds")
+        # print("\n\n")
+        
+        return result
+
     def replace_local_variable(self, node_to_replace, tree):
+        # print(f"Starting timer in method replace_local_variable")
+        # start_time = time.time()
+        
         """
         Find *read* uses of a single local variable and return
         ([list_of_nodes], var_type).
         """
         name = node_to_replace.name
-        # 1) figure out its declared type
         decl_query = JAVA_LANGUAGE.query(f'''
         (local_variable_declaration
             type: (_) @var_type
@@ -625,9 +744,19 @@ class JavaDeclarationRemoval(ASTRemoval):
             if cap.startswith("use") and self.is_read_context(n):
                 to_replace.append(n)
 
-        return to_replace, var_type
+        result = to_replace, var_type
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method replace_local_variable completed in {runtime:.6f} seconds")
+        # print("\n\n")
+        
+        return result
     
     def replace_nodes(self, nodes_to_remove: set):
+        # print(f"Starting timer in method replace_nodes")
+        # start_time = time.time()
+        
         return_mapping = {
             "int": "42",
             "boolean": "true",
@@ -696,7 +825,15 @@ class JavaDeclarationRemoval(ASTRemoval):
         tree = parser.parse(modified_code.encode("utf-8"))
         source_code = tree.text
         self.content = modified_code
-        return modified_code
+        
+        result = modified_code
+        
+        # end_time = time.time()
+        # runtime = end_time - start_time
+        # print(f"Method replace_nodes completed in {runtime:.6f} seconds")
+        # print("\n\n")
+        
+        return result
 
     
     def extract_param_types(self,params_text):
