@@ -69,6 +69,12 @@ evaluation_results_YYYYMMDD_HHMMSS/
 
 ## Evaluation Against Perses
 
+The tool has been evaluated using 3 different test suites, with all 3 modes tested per suite:
+
+- **JDK23 errors**: Compilation error test cases from JDK 23
+- **JDK11 errors**: Compilation error test cases from JDK 11  
+- **JDK8 crashes**: Compiler crash test cases from JDK 8
+
 Comparative evaluation results against the Perses reducer can be found in the `perses-results/` folder.
 
 ## Results
