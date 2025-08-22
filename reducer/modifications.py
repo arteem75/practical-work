@@ -2,6 +2,7 @@ from abc import abstractmethod
 import os
 from tree_sitter import Language, Parser
 # import time
+import sys
 
 import networkx as nx
 try:
