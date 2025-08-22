@@ -243,8 +243,14 @@ def build_graph_from_file(file_path: str, language: str) -> nx.DiGraph:
 
 
 if __name__ == '__main__':
-    file_path = '/Users/artemancikov/Desktop/practical-work-new/reducer/HelloWorld.java'
+    import sys
+    
+    if len(sys.argv) > 1:
+        file_path = sys.argv[1]
+    else:
+        file_path = 'reducer/HelloWorld.java'
+    
     builder = JavaGraphBuilder()
     graph = builder.build_graph(file_path)
-    #print()
     nx.write_gml(graph, "java_graph_HelloWorld.gml")
+    print(f"Graph built from {file_path} and saved to java_graph_HelloWorld.gml")

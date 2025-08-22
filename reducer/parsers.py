@@ -7,7 +7,7 @@ except ImportError:
     import utils
 
 
-JAVA_LANGUAGE = Language("/Users/artemancikov/Desktop/practical-work-new/reducer/build/java.so", "java")
+JAVA_LANGUAGE = Language("build/java.so", "java")
 JAVA_PARSER = Parser()
 JAVA_PARSER.set_language(JAVA_LANGUAGE)
 

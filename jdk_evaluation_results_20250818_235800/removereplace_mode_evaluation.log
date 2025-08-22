@@ -3,8 +3,8 @@
 
 ==================================================
 ITERATION 1 - REMOVEREPLACE MODE
-Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java
-Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/run.sh
+Source: /reducer/jdk-crashes/iter_1/Main.java
+Script: /reducer/jdk-crashes/iter_1/run.sh
 ==================================================
 
 /Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
@@ -12,31 +12,31 @@ Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+  File "/main.py", line 286, in <module>
     main()
     ~~~~^^
-  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+  File "/main.py", line 58, in main
     graph = build_graph_from_file(file_path, args.language)
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+  File "/reducer/graph.py", line 242, in build_graph_from_file
     return builder().build_graph(file_path)
            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+  File "/reducer/graph.py", line 50, in build_graph
     tree = parsers.parse(source_file, self.LANGUAGE)
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+  File "/reducer/parsers.py", line 53, in parse
     file_content = utils.read_file(file_name).encode("utf-8")
                    ~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+  File "/reducer/utils.py", line 2, in read_file
     with open(file_path, 'r') as file:
          ~~~~^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java'
-Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java
+FileNotFoundError: [Errno 2] No such file or directory: '/reducer/jdk-crashes/iter_1/Main.java'
+Using source file: /reducer/jdk-crashes/iter_1/Main.java
 
-ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/run.sh', '--mode', 'removereplace']' returned non-zero exit status 1.
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/reducer/jdk-crashes/iter_1/Main.java', '--script', '/reducer/jdk-crashes/iter_1/run.sh', '--mode', 'removereplace']' returned non-zero exit status 1.
 
 ==================================================
 ITERATION 2 - REMOVEREPLACE MODE
-Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java
-Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/run.sh
+Source: /reducer/jdk-crashes/iter_2/Main.java
+Script: /reducer/jdk-crashes/iter_2/run.sh
 ==================================================
 
 /Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
@@ -44,23 +44,23 @@ Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+  File "/main.py", line 286, in <module>
     main()
     ~~~~^^
-  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+  File "/main.py", line 58, in main
     graph = build_graph_from_file(file_path, args.language)
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+  File "/reducer/graph.py", line 242, in build_graph_from_file
     return builder().build_graph(file_path)
            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+  File "/reducer/graph.py", line 50, in build_graph
     tree = parsers.parse(source_file, self.LANGUAGE)
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+  File "/reducer/parsers.py", line 53, in parse
     file_content = utils.read_file(file_name).encode("utf-8")
                    ~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+  File "/reducer/utils.py", line 2, in read_file
     with open(file_path, 'r') as file:
          ~~~~^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java'
-Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java
+FileNotFoundError: [Errno 2] No such file or directory: '/reducer/jdk-crashes/iter_2/Main.java'
+Using source file: /reducer/jdk-crashes/iter_2/Main.java
 
-ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/run.sh', '--mode', 'removereplace']' returned non-zero exit status 1.
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/reducer/jdk-crashes/iter_2/Main.java', '--script', '/reducer/jdk-crashes/iter_2/run.sh', '--mode', 'removereplace']' returned non-zero exit status 1.
