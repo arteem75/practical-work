@@ -1,0 +1,16 @@
+class
+Bareness
+{
+Long
+miamis
+;
+Bareness
+(
+)
+{
+miamis
+=
+12.5f
+;
+}
+}

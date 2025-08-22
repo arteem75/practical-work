@@ -1,0 +1,16 @@
+class
+Jobbed
+{
+String
+honed
+(
+)
+{
+return
+new
+Object
+(
+)
+;
+}
+}

@@ -1,0 +1,424 @@
+[08:43:41] [INFO   ] The command-line options are: --append-to-progress-dump-file "true" --call-creduce "false" --call-formatter "false" --creduce-cmd "creduce" --default-delta-debugger-for-kleene "DFS" --deps "[]" --edit-caching "true" --enable-lightweight-refreshing "true" --enable-line-slicer "false" --enable-lpr "false" --enable-token-slicer "false" --enable-trec "false" --enable-tree-slicer "false" --enable-vulcan "false" --fixpoint "true" --format-cmd "" --help "false" --input-file "/Users/artemancikov/Desktop/practical work/try1/reducer/final_generator_source2/iter_2/Main.java" --lang "" --language-ext-jars "[]" --list-algs "false" --list-langs "false" --list-parser-facades "false" --list-verbosity-levels "false" --lpr-fixpoint "false" --max-bfs-depth-for-regular-rule-node "5" --max-edit-count-for-regular-rule-node "100" --non-deletion-iteration-limit "10" --on-demand-coarse-grit-reducer-annotations "[]" --on-demand-fine-grit-reducer-annotations "[]" --on-demand-medium-grit-reducer-annotations "[]" --parser-facade-class-name "" --pass-level-caching "false" --query-cache-refresh-threshold "0" --query-cache-type "CONTENT_SHA512" --query-caching "AUTO" --reparse-each-iteration "true" --script-execution-keep-waiting-after-timeout "true" --script-execution-timeout-in-seconds "600" --stop-at-first-compatible-child-for-regular-rule-node "false" --test-script "/Users/artemancikov/Desktop/practical work/try1/reducer/final_generator_source2/iter_2/run2.sh" --threads "auto" --verbosity "INFO" --version "false" --vulcan-fixpoint "false" --window-size "4" 
+[08:43:41] [SEVERE ] Failed to load the class of the parser facade org.perses.grammar.sql.tidb.TiDBParserFacade for LanguageTiDB{name=tidb, extensions=[tidb], defaultCodeFormatControl=COMPACT_ORIG_FORMAT}
+org.perses.grammar.sql.tidb.TiDBParserFacade 
+[08:43:41] [INFO   ] Tree Building: Start building spar-tree from input file SourceFile{file=FilePathWithContent{file=/Users/artemancikov/Desktop/practical work/try1/reducer/final_generator_source2/iter_2/Main.java}, lang=LanguageJava{name=java, extensions=[java], defaultCodeFormatControl=SINGLE_TOKEN_PER_LINE}} 
+[08:43:41] [INFO   ] Tree Building: Step 1: Antlr parsing. 
+[08:43:43] [INFO   ] Tree Building: Step 2: Converting parse tree to spar-tree 
+[08:43:43] [INFO   ] Tree Building: Step 3: Simplifying spar-tree 
+[08:43:43] [INFO   ] Tree Building: Finished in TimeSpan{startMillis=1754376221763, endMillis=1754376223131, formatted=1 second} 
+[08:43:43] [INFO   ] The reduction process started at 08:43:43 2025/08/05 
+[08:43:43] [INFO   ] Cache setting: query-caching=enabled, edit-caching=enabled, query-cache=content_sha512 
+[08:43:43] [INFO   ] Reduction Started at 08:43:43 2025/08/05 
+[08:43:43] [INFO   ] The sanity check result is: PassingSanityCheckResult 
+[08:43:43] [INFO   ] The number of lexemes in the token factory is is 114 
+[08:43:43] [INFO   ] Reduction algorithm is perses_node_priority_with_dfs_delta 
+[08:43:43] [INFO   ] perses_node_priority_with_dfs_delta started at 08:43:43 2025/08/05. #tokens=584 
+[08:43:43] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New fixpoint iteration started. #Tokens=584 
+[08:43:43] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=579) 
+[08:43:45] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 27 tokens, ratio=557/584=95.38% 
+[08:43:46] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 17 tokens, ratio=540/584=92.47% 
+[08:43:47] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=579): queue=1, delete 44 tokens, ratio=540/584=92.47% 
+[08:43:47] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=262) 
+[08:43:47] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=262): queue=5, delete 0 tokens, ratio=540/584=92.47% 
+[08:43:47] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=260) 
+[08:43:47] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=260): queue=7, delete 0 tokens, ratio=540/584=92.47% 
+[08:43:47] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=258) 
+[08:43:49] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 20 tokens, ratio=520/584=89.04% 
+[08:43:50] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 23 tokens, ratio=497/584=85.10% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=258): queue=9, delete 43 tokens, ratio=497/584=85.10% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=150) 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=150): queue=13, delete 0 tokens, ratio=497/584=85.10% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=132) 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=132): queue=15, delete 0 tokens, ratio=497/584=85.10% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=132) 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=132): queue=17, delete 0 tokens, ratio=497/584=85.10% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=130) 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 130 tokens, ratio=367/584=62.84% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=130): queue=21, delete 130 tokens, ratio=367/584=62.84% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=120) 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=120): queue=20, delete 0 tokens, ratio=367/584=62.84% 
+[08:43:51] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=118) 
+[08:43:52] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 86 tokens, ratio=281/584=48.12% 
+[08:43:53] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=118): queue=22, delete 86 tokens, ratio=281/584=48.12% 
+[08:43:53] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=106) 
+[08:43:53] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 106 tokens, ratio=175/584=29.97% 
+[08:43:53] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=106): queue=24, delete 106 tokens, ratio=175/584=29.97% 
+[08:43:53] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=24) 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=24): queue=23, delete 0 tokens, ratio=175/584=29.97% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=23) 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 23 tokens, ratio=152/584=26.03% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=23): queue=25, delete 23 tokens, ratio=152/584=26.03% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=23) 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 23 tokens, ratio=129/584=22.09% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=23): queue=24, delete 23 tokens, ratio=129/584=22.09% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=22) 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=22): queue=23, delete 0 tokens, ratio=129/584=22.09% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=17) 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=17): queue=26, delete 0 tokens, ratio=129/584=22.09% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=15) 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=15): queue=28, delete 0 tokens, ratio=129/584=22.09% 
+[08:43:54] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=15) 
+[08:43:55] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=15): queue=29, delete 0 tokens, ratio=129/584=22.09% 
+[08:43:55] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=15) 
+[08:43:55] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 9 tokens, ratio=120/584=20.55% 
+[08:43:55] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=15): queue=29, delete 9 tokens, ratio=120/584=20.55% 
+[08:43:55] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=14) 
+[08:43:55] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=14): queue=29, delete 0 tokens, ratio=120/584=20.55% 
+[08:43:55] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=13) 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 13 tokens, ratio=107/584=18.32% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=13): queue=32, delete 13 tokens, ratio=107/584=18.32% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=13) 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=13): queue=31, delete 0 tokens, ratio=107/584=18.32% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11) 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 11 tokens, ratio=96/584=16.44% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11): queue=33, delete 11 tokens, ratio=96/584=16.44% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11) 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11): queue=32, delete 0 tokens, ratio=96/584=16.44% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11) 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11): queue=32, delete 0 tokens, ratio=96/584=16.44% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11) 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 11 tokens, ratio=85/584=14.55% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=11): queue=33, delete 11 tokens, ratio=85/584=14.55% 
+[08:43:56] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=10) 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 9 tokens, ratio=76/584=13.01% 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=10): queue=32, delete 9 tokens, ratio=76/584=13.01% 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=9) 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=9): queue=32, delete 0 tokens, ratio=76/584=13.01% 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=9) 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=9): queue=32, delete 0 tokens, ratio=76/584=13.01% 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=7) 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 7 tokens, ratio=69/584=11.82% 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=7): queue=34, delete 7 tokens, ratio=69/584=11.82% 
+[08:43:57] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=7) 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 7 tokens, ratio=62/584=10.62% 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=7): queue=33, delete 7 tokens, ratio=62/584=10.62% 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=7) 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 6 tokens, ratio=56/584=9.59% 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=7): queue=32, delete 6 tokens, ratio=56/584=9.59% 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=32, delete 0 tokens, ratio=56/584=9.59% 
+[08:43:58] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5) 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 5 tokens, ratio=51/584=8.73% 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5): queue=34, delete 5 tokens, ratio=51/584=8.73% 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5) 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 5 tokens, ratio=46/584=7.88% 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5): queue=33, delete 5 tokens, ratio=46/584=7.88% 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=32, delete 0 tokens, ratio=46/584=7.88% 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=32, delete 0 tokens, ratio=46/584=7.88% 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=33, delete 0 tokens, ratio=46/584=7.88% 
+[08:43:59] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 4 tokens, ratio=42/584=7.19% 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=34, delete 4 tokens, ratio=42/584=7.19% 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 1 tokens, ratio=41/584=7.02% 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 1 tokens, ratio=40/584=6.85% 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=33, delete 2 tokens, ratio=40/584=6.85% 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=33, delete 0 tokens, ratio=40/584=6.85% 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=35, delete 0 tokens, ratio=40/584=6.85% 
+[08:44:00] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 3 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=37, delete 3 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=36, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=35, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=34, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=33, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=32, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=31, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=30, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=29, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=28, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=27, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=26, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=25, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=24, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=23, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=22, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=22, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=21, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=20, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=19, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=18, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=17, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=16, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=15, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=14, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=13, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=12, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=11, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=10, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=9, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=8, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=7, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=6, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=5, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=4, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=3, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=2, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=1, delete 0 tokens, ratio=37/584=6.34% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 1 tokens, ratio=36/584=6.16% 
+[08:44:01] [INFO   ] perses_node_priority_with_dfs_delta ended at 08:44:01 2025/08/05. #old=584, #new=36 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=0): queue=0, delete 1 tokens, ratio=36/584=6.16% 
+[08:44:01] [INFO   ] Fixpoint[1]:Reducer[perses_node_priority_with_dfs_delta]: Fixpoint iteration finished, delete 548 tokens, ratio=36/584=6.16% 
+[08:44:01] [INFO   ] perses_node_priority_with_dfs_delta started at 08:44:01 2025/08/05. #tokens=36 
+[08:44:01] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: New fixpoint iteration started. #Tokens=36 
+[08:44:01] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=36) 
+[08:44:02] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 7 tokens, ratio=29/584=4.97% 
+[08:44:02] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=36): queue=0, delete 7 tokens, ratio=29/584=4.97% 
+[08:44:02] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=25) 
+[08:44:02] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=25): queue=1, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:02] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=23) 
+[08:44:02] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=23): queue=3, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:02] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=21) 
+[08:44:03] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=21): queue=5, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:03] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=12) 
+[08:44:03] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=12): queue=6, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:03] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=9) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=9): queue=7, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=8) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=8): queue=9, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=11, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=12, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=12, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=12, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5): queue=14, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=17, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=17, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=18, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=19, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=21, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=23, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:04] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=25, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=25, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=26, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=27, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=28, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=27, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=26, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=25, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=24, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=23, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=22, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=21, delete 0 tokens, ratio=29/584=4.97% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: New minimal, delete 1 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=20, delete 1 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=19, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=18, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=17, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=16, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=15, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=14, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] perses_node_priority_with_dfs_delta ended at 08:44:05 2025/08/05. #old=36, #new=28 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=14, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=13, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=12, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=11, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=10, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=9, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=8, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=7, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=6, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=5, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=4, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=3, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=2, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=1, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=0, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] Fixpoint[2]:Reducer[perses_node_priority_with_dfs_delta]: Fixpoint iteration finished, delete 8 tokens, ratio=28/584=4.79% 
+[08:44:05] [INFO   ] perses_node_priority_with_dfs_delta started at 08:44:05 2025/08/05. #tokens=28 
+[08:44:05] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: New fixpoint iteration started. #Tokens=28 
+[08:44:05] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=28) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=28): queue=0, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=24) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=24): queue=1, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=22) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=22): queue=3, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=20) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=20): queue=5, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=12) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=12): queue=6, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=8) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=8): queue=7, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=8) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=8): queue=8, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=10, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=11, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=11, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=6): queue=11, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5) 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=5): queue=13, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:06] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=16, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=16, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=17, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=4): queue=18, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=20, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=3): queue=22, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=24, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=24, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=25, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=2): queue=26, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] perses_node_priority_with_dfs_delta ended at 08:44:07 2025/08/05. #old=28, #new=28 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=27, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=26, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=25, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=24, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=23, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=22, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=21, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=20, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=19, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=18, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=17, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=16, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=15, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=14, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=14, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=13, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=12, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=11, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=10, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=9, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=8, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=7, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=6, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=5, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=4, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=3, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=2, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=1, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1) 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Reduce node (#leaves=1): queue=0, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Fixpoint[3]:Reducer[perses_node_priority_with_dfs_delta]: Fixpoint iteration finished, delete 0 tokens, ratio=28/584=4.79% 
+[08:44:07] [INFO   ] Reduction ended at 08:44:07 2025/08/05 
+[08:44:07] [INFO   ] Elapsed time is 24 seconds 
+[08:44:07] [INFO   ] Removed 556 token(s). Reduction ratio is 28/584=4.79% 
+[08:44:07] [INFO   ] Test script execution count: 95 

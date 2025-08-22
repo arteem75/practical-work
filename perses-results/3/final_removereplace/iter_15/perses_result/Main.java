@@ -1,0 +1,13 @@
+class
+Main
+{
+{
+Integer
+ronny
+;
+ronny
+=
+4.4
+;
+}
+}

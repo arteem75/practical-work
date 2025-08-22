@@ -1,0 +1,13 @@
+class
+Main
+{
+Float
+lawn
+(
+)
+{
+return
+"bug"
+;
+}
+}

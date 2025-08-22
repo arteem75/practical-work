@@ -1,0 +1,13 @@
+class
+Main
+{
+Boolean
+forgery
+(
+)
+{
+return
+1337
+;
+}
+}

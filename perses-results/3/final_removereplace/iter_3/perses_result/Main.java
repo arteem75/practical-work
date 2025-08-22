@@ -1,0 +1,13 @@
+class
+Main
+{
+Smuttier
+maleness
+=
+5
+;
+}
+class
+Smuttier
+{
+}

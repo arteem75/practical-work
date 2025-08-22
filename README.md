@@ -34,7 +34,6 @@ python3 -m main --source-file iter_1/Main.java --script iter_1/run.sh --mode rem
 - **`evaluator.py`**: Runs batch evaluation across multiple test cases
 - **`comparator.py`**: Compares reduction results between different modes
 
-
 ## Reproducing Evaluation Results
 
 ### 1. Setup Test Cases
@@ -48,11 +47,10 @@ python3 -m main --source-file iter_1/Main.java --script iter_1/run.sh --mode rem
 python3 evaluator.py
 ```
 
-
 ### 3. Analyze Results
 ```bash
 # Parse timing data
-python3 extract_times.py
+python3 extract_times.py <path_to_log_file>
 
 # Compare modes
 python3 comparator.py
@@ -68,3 +66,11 @@ evaluation_results_YYYYMMDD_HHMMSS/
 ├── replace_mode_results/
 └── removereplace_mode_results/
 ```
+
+## Evaluation Against Perses
+
+Comparative evaluation results against the Perses reducer can be found in the `perses-results/` folder.
+
+## Results
+
+[Tables and detailed results will be inserted here]

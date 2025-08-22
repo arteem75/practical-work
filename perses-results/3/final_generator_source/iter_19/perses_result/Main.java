@@ -1,0 +1,13 @@
+class
+Clouts
+{
+Double
+disquiet
+(
+)
+{
+return
+41343431
+;
+}
+}

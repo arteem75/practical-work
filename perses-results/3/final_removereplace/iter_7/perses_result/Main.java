@@ -1,0 +1,11 @@
+class
+Backpack
+{
+{
+String
+x_0
+=
+26
+;
+}
+}

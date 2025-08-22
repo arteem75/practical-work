@@ -1,0 +1,16 @@
+class
+Cambered
+{
+boolean
+pegs
+(
+)
+{
+long
+popguns
+;
+return
+popguns
+;
+}
+}

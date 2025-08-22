@@ -1,0 +1,17 @@
+class
+Wended
+{
+Wended
+(
+)
+{
+super
+(
+(
+short
+)
+"bug"
+)
+;
+}
+}

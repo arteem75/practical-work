@@ -1,0 +1,16 @@
+class
+Warping
+{
+<
+F_H
+>
+F_H
+skis
+(
+)
+{
+return
+1
+;
+}
+}

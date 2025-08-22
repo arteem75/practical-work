@@ -1,0 +1,9 @@
+class
+Main
+{
+Integer
+moiety
+=
+24.970
+;
+}

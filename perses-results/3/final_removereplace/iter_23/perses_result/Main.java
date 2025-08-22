@@ -1,0 +1,16 @@
+class
+Main
+{
+byte
+weighty
+(
+)
+{
+return
+(
+Number
+)
+null
+;
+}
+}

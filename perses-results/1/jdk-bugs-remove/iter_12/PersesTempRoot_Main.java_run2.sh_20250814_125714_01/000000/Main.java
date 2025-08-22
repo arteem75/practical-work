@@ -1,0 +1,107 @@
+package src.punchline;
+class Main {
+  static public final Integer sausages(float snot) {
+    final Integer henri = -67;
+    Function2<Integer, Float, Void> rescuer = (chaps, canisters) -> {
+      Function0<String> lionized = () -> {
+        final String holmes = "footings";
+        final Manifesto swamped = ((Whiskeys<Byte, Long, Short>) null).surgical;
+        swamped.metered();
+        return holmes;
+      };
+      Boolean mammoth = false;
+      final Whinnied<Byte, Float> shootout = ((mammoth) ?
+        (Whinnied<Byte, Float>) null :
+         (Whinnied<Byte, Float>) null);
+      return null;
+    };
+    return henri;
+  }
+  static public final void josiah(Byte wheezes) {
+    final Boolean trembles = false;
+    final Oftenest abase = (Oftenest) null;
+    Oftenest sealer = ((trembles) ?
+      abase :
+       abase);
+  }
+  static public final void cursor(Tolerably mazda) {
+  }
+}
+interface Function0<R> {
+  public R apply();
+}
+interface Function1<A1, R> {
+}
+interface Function2<A1, A2, R> {
+  public R apply(A1 a1, A2 a2);
+}
+interface Function3<A1, A2, A3, R> {
+}
+interface Manifesto {
+  public abstract void metered() ;
+  public abstract <F_L extends Object> F_L upmarket(double victuals) ;
+}
+abstract class Whiskeys<K extends Byte, N, I>  {
+  public Manifesto surgical;
+  public Whiskeys(Manifesto surgical) {
+  }
+  public <F_L extends Object> F_L upmarket(double victuals) {
+    return (F_L) null;
+  }
+  public void metered() {
+  }
+}
+interface Oftenest extends Manifesto {
+}
+abstract class Seashore<U extends Integer, T, I>  {
+  public Seashore(Byte sirocco,Seashore<U, T, U> numeric) {
+  }
+  public void metered() {
+  }
+  public <F_L extends Object> F_L upmarket(double victuals) {
+    return (F_L) null;
+  }
+}
+interface Whinnied<M, X> extends Manifesto {
+}
+abstract class Outshines<S, U extends Boolean>  {
+  public Outshines(S dormancy) {
+  }
+  public <F_L extends Object> F_L upmarket(double victuals) {
+    return ((Mechanize<F_L, Function2<F_L, F_L, F_L>, F_L>) null).engorges;
+  }
+}
+abstract class Mechanize<L extends Object, C extends Function2<L, ? super L, ? extends L>, G>  {
+  public L engorges;
+  public Mechanize(L engorges) {
+    this.engorges = engorges;
+  }
+  public void metered() {
+    Short demanding = (short)64;
+    final Patna<Byte> crossways = new Patna<Byte>(demanding);
+    final Patna<Byte> dermis = crossways;
+    dermis.brandie();
+  }
+  public L mill() {
+    L steeliest = (L) null;
+    return steeliest;
+  }
+}
+class Patna<U extends Byte>  {
+  public Patna(Short confabs) {
+  }
+  public final void brandie() {
+  }
+}
+abstract class Mckenzie<J extends Mechanize<? extends Character, ? extends Function2<Character, Character, Character>, Character>>  {
+}
+final class Tolerably  {
+  public void metered() {
+  }
+  public <F_L extends Object> F_L upmarket(double victuals) {
+    final F_L bugatti = (F_L) null;
+    final F_L skips = bugatti;
+    Main.cursor((Tolerably) null);
+    return skips;
+  }
+}

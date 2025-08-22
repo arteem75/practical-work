@@ -1,0 +1,16 @@
+class
+Main
+{
+short
+civilly
+;
+Boolean
+forgery
+(
+)
+{
+return
+civilly
+;
+}
+}

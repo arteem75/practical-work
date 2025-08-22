@@ -1,0 +1,13 @@
+class
+Abusers
+{
+String
+timidly
+(
+)
+{
+return
+12131
+;
+}
+}

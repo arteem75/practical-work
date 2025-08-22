@@ -1,0 +1,17 @@
+class
+Main
+{
+Gabbiest
+uncle
+(
+)
+{
+return
+"bug"
+;
+}
+}
+class
+Gabbiest
+{
+}

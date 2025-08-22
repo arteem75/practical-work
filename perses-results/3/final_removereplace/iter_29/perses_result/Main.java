@@ -1,0 +1,9 @@
+class
+Main
+{
+byte
+minutemen
+=
+4000
+;
+}

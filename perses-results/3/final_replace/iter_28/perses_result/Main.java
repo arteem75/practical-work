@@ -1,0 +1,13 @@
+class
+Main
+{
+void
+harelips
+(
+)
+{
+return
+x0
+;
+}
+}

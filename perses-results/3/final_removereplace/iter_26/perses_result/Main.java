@@ -1,0 +1,13 @@
+class
+Main
+{
+Integer
+feed
+=
+true
+?
+true
+:
+48
+;
+}

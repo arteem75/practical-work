@@ -1,0 +1,16 @@
+class
+Main
+{
+Long
+salve
+(
+)
+{
+short
+enlivens
+;
+return
+enlivens
+;
+}
+}

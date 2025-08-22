@@ -1,0 +1,13 @@
+class
+Main
+{
+{
+Float
+wheres
+;
+wheres
+=
+5
+;
+}
+}

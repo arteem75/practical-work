@@ -1,0 +1,13 @@
+class
+Main
+{
+int
+vicarious
+(
+)
+{
+return
+3.14
+;
+}
+}

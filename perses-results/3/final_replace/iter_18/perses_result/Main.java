@@ -1,0 +1,13 @@
+class
+Cambered
+{
+boolean
+pegs
+(
+)
+{
+return
+0L
+;
+}
+}

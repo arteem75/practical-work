@@ -1,0 +1,13 @@
+class
+Main
+{
+void
+horsier
+(
+)
+{
+return
+"bug"
+;
+}
+}

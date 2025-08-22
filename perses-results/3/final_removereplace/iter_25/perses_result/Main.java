@@ -1,0 +1,15 @@
+class
+Main
+{
+static
+final
+String
+bandied
+;
+{
+bandied
+=
+""
+;
+}
+}
