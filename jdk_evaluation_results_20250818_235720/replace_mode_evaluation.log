@@ -1,0 +1,642 @@
+=== REPLACE MODE EVALUATION LOG ===
+
+
+==================================================
+ITERATION 1 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 2 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 3 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_3/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_3/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_3/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_3/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_3/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_3/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 4 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_4/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_4/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_4/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_4/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_4/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_4/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 5 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_5/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_5/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_5/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_5/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_5/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_5/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 6 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_6/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_6/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_6/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_6/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_6/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_6/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 7 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_7/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_7/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_7/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_7/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_7/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_7/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 8 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_8/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_8/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_8/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_8/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_8/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_8/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 9 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_9/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_9/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_9/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_9/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_9/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_9/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 10 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_10/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_10/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_10/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_10/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_10/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_10/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 11 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_11/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_11/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_11/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_11/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_11/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_11/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 12 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_12/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_12/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_12/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_12/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_12/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_12/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 13 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_13/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_13/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_13/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_13/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_13/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_13/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 14 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_14/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_14/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_14/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_14/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_14/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_14/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 15 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_15/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_15/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_15/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_15/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_15/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_15/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 16 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_16/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_16/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_16/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_16/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_16/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_16/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 17 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_17/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_17/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_17/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_17/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_17/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_17/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 18 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_18/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_18/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_18/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_18/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_18/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_18/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 19 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_19/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_19/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_19/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_19/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_19/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_19/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 20 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_20/Main.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_20/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 58, in main
+    graph = build_graph_from_file(file_path, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 242, in build_graph_from_file
+    return builder().build_graph(file_path)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/graph.py", line 50, in build_graph
+    tree = parsers.parse(source_file, self.LANGUAGE)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/parsers.py", line 53, in parse
+    file_content = utils.read_file(file_name).encode("utf-8")
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/utils.py", line 2, in read_file
+    with open(file_path, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_20/Main.java'
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_20/Main.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_20/Main.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_20/run.sh', '--mode', 'replace']' returned non-zero exit status 1.

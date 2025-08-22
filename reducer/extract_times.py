@@ -1,6 +1,6 @@
 import re
 
-log_path = "/Users/artemancikov/Desktop/practical-work-new/jdk_evaluation_results_20250814_001423/replace_mode_evaluation.log" 
+log_path = "/Users/artemancikov/Desktop/practical-work-new/final-jdk_evaluation_results_20250821_102634/replace_mode_evaluation.log" 
 
 iteration_pattern = re.compile(r"ITERATION\s+(\d+)\s+-")
 time_pattern = re.compile(r"Execution time:\s+([\d.]+)\s+seconds")

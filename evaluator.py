@@ -4,12 +4,13 @@ from pathlib import Path
 from tqdm import tqdm
 from datetime import datetime
 
-base_dir = Path("/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-bugs-modified")
+base_dir = Path("reducer/generator_modified")
 
-num_iters = 20
+# Number of iterations
+num_iters = 21
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-results_dir = Path(f"jdk_evaluation_results_{timestamp}")
+results_dir = Path(f"evaluation_results_{timestamp}")
 results_dir.mkdir(exist_ok=True)
 
 print("Starting REMOVE MODE section")

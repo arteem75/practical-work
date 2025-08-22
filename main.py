@@ -17,36 +17,34 @@ from reducer.modifications import AST_REMOVALS
 
 # Argument parsing
 parser = argparse.ArgumentParser(
-    description=('Modify Solidity files based on node removal and '
-                 "Slither analysis, considering specified findings.")
+    description=('Modify Java files based on node removal and '
+                 "AST analysis, considering specified properties.")
 )
 
 parser.add_argument(
     "--language",
-    default="java",  #"solidity",
+    default="java",
     choices=['solidity', 'c', 'java'],
-    help="Select specific language (options: 'solidity', 'c')"
+    help="Select specific language (options: 'solidity', 'c', 'java')"
 )
 
 parser.add_argument(
     "--source-file",
     type=str,
-    #default="/Users/artemancikov/Desktop/practical work/try1/reducer/HelloWorld.java",
-    default='/Users/artemancikov/Desktop/practical work/try1/short_tests/FunctionCalls.java',
+    required=True,
     help="Source file to minimize",
 )
 parser.add_argument(
     '--script',
     type=str,
-    help='script to run"',
-    #default="/Users/artemancikov/Desktop/practical work/try1/reducer/runJava.sh"
-    default='/Users/artemancikov/Desktop/practical work/try1/short_tests/run.sh'
+    required=True,
+    help='Test script to run'
 )
 parser.add_argument(
     "--mode",
     choices=["remove", "replace", "removereplace"],
     default="remove",
-    help="Choose 'remove' to only delete nodes, or 'replace' to first replace then remove.")
+    help="Choose 'remove' to only delete nodes, 'replace' to replace then remove, or 'removereplace' for combined approach.")
 args = parser.parse_args()
 
 
@@ -284,11 +282,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-"""
-replacement should only remove the declaration and replace the usages
-for constructors: replace expressions like new Object() with null
-
-
-
-"""

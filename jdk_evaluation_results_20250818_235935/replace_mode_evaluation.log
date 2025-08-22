@@ -1,0 +1,39 @@
+=== REPLACE MODE EVALUATION LOG ===
+
+
+==================================================
+ITERATION 1 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Test.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 286, in <module>
+    main()
+    ~~~~^^
+  File "/Users/artemancikov/Desktop/practical-work-new/main.py", line 63, in main
+    interesting = Interesting(graph, content,
+                              prop_checker, args.language)
+  File "/Users/artemancikov/Desktop/practical-work-new/reducer/dd.py", line 27, in __init__
+    raise Exception(
+        "The given property does not hold; the test script failed")
+Exception: The given property does not hold; the test script failed
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Test.java
+
+ERROR: Command '['python3', '-m', 'main', '--source-file', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/Test.java', '--script', '/Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_1/run.sh', '--mode', 'replace']' returned non-zero exit status 1.
+
+==================================================
+ITERATION 2 - REPLACE MODE
+Source: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Test.java
+Script: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/run.sh
+==================================================
+
+/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Using source file: /Users/artemancikov/Desktop/practical-work-new/reducer/jdk-crashes/iter_2/Test.java
+Number of replace iterations: 1
+Execution time: 30.570422887802124 seconds

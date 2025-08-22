@@ -1,4 +1,5 @@
 from abc import abstractmethod
+import os
 from tree_sitter import Language, Parser
 # import time
 
@@ -11,7 +12,14 @@ except ImportError:
     from graph import DeclarationNode
 
 
-JAVA_LANGUAGE = Language("/Users/artemancikov/Desktop/practical work/try1/reducer/build/java.so", "java")
+
+java_lib_path = "build/java.so"
+if not os.path.exists(java_lib_path):
+    print(f"Error: Java tree-sitter library not found at {java_lib_path}")
+    print("Please build the tree-sitter Java library first")
+    sys.exit(1)
+
+JAVA_LANGUAGE = Language(java_lib_path, "java")
 
 class ASTRemoval(parsers.TreeTraversal):
     
@@ -880,8 +888,12 @@ AST_REMOVALS = {
 }
 
 if __name__ == "__main__":
-    file_name = "/Users/artemancikov/Desktop/practical-work-new/reducer/HelloWorld.java"
-    #'/Users/artemancikov/Desktop/practical work/try1/generator/iter_1/Main.java'
+    import sys
+    if len(sys.argv) > 1:
+        file_name = sys.argv[1]
+    else:
+        file_name = "reducer/HelloWorld.java"  
+    
     import utils
     content = utils.read_file(file_name)
     modifier = JavaDeclarationRemoval(content, nx.DiGraph())
@@ -911,33 +923,3 @@ if __name__ == "__main__":
 
 
 
-"""
-try to integrate with jreduce 
-
-try to run jreduce on the given programs
-try to find a minimised version of the program with jreduce
-try on the generated programs to keep the introduced transformation persistand after removing as much as possible
-
-
-heads up: 
-need to behave well with overloading/overriding; same name/diff class
-"""
-
-"""
-class A{
-    int a;
-    int x;
-    A(int a){
-        this.a = a;
-    }
-}
-class B extends A {
-    B(int a){
-       
-    }
-    int foo(){
-    print(x)
-    }
-}
-next -> remove classes, remove all usages of all members
-"""
