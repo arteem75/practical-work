@@ -728,7 +728,6 @@ class JavaDeclarationRemoval(ASTRemoval):
             if cap == "var_type":
                 var_type = tree.text[n.start_byte:n.end_byte].decode("utf-8").strip()
 
-        # 2) now only grab *reads* in these contexts:
         use_query = JAVA_LANGUAGE.query(f'''
         ;; initializer RHS: int x = a;
         (variable_declarator
@@ -748,7 +747,6 @@ class JavaDeclarationRemoval(ASTRemoval):
 
         to_replace = []
         for n, cap in use_query.captures(tree.root_node):
-            # only the captures named use1…use6
             if cap.startswith("use") and self.is_read_context(n):
                 to_replace.append(n)
 
@@ -845,7 +843,6 @@ class JavaDeclarationRemoval(ASTRemoval):
 
     
     def extract_param_types(self,params_text):
-        #avoid string operations, replace with nodes from the parse tree
         params_text = params_text.strip()
         if params_text.startswith("(") and params_text.endswith(")"):
             inner = params_text[1:-1].strip()

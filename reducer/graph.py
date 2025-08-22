@@ -140,7 +140,7 @@ class JavaGraphBuilder(GraphBuilder):
             func_node = DeclarationNode(func_name, "function", parent_node, function_args)
         self.graph.add_node(func_node)
         self.push_declaration(func_node)
-        self.current_function = func_node  # Set the current function context
+        self.current_function = func_node 
         if parent_node is not None:
             self.graph.add_edge(parent_node, func_node, label="def")
     
@@ -168,7 +168,6 @@ class JavaGraphBuilder(GraphBuilder):
                 if not name_node:
                     continue
                 var_name = name_node.text.decode("utf-8")
-                # build and add our node
                 local_node = DeclarationNode(var_name, "local_variable", parent)
                 self.graph.add_node(local_node)
                 if parent is not None:

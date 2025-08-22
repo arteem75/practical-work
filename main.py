@@ -12,8 +12,6 @@ from reducer.modifications import AST_REMOVALS
 
 
 
-#example Solidity:greduce --script solidity2.sh
-#example C: jreduce --source-file ./example.c --script ./cproperty.sh --language c
 
 # Argument parsing
 parser = argparse.ArgumentParser(
