@@ -79,4 +79,13 @@ Comparative evaluation results against the Perses reducer can be found in the `p
 
 ## Results
 
-[Tables and detailed results will be inserted here]
+
+![Table Image](result-tables/1.png)
+![Table Image](result-tables/2.png)
+![Table Image](result-tables/3.png)
+![Table Image](result-tables/4.png)
+![Table Image](result-tables/5.png)
+![Table Image](result-tables/6.png)
+![Table Image](result-tables/7.png)
+![Table Image](result-tables/8.png)
+![Table Image](result-tables/9.png)
