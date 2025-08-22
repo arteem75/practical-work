@@ -7,7 +7,7 @@ Source: /reducer/jdk-crashes/iter_1/Test.java
 Script: /reducer/jdk-crashes/iter_1/run.sh
 ==================================================
 
-/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
   warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
@@ -32,7 +32,7 @@ Source: /reducer/jdk-crashes/iter_2/Test.java
 Script: /reducer/jdk-crashes/iter_2/run.sh
 ==================================================
 
-/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+/lib/python3.13/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
   warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
@@ -46,12 +46,12 @@ Traceback (most recent call last):
   File "/reducer/dd.py", line 164, in perform_dd
     output_nodes = [x for x in dd_obj(nodes)]
                                ~~~~~~^^^^^^^
-  File "/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/picire/dd.py", line 86, in __call__
+  File "/lib/python3.13/site-packages/picire/dd.py", line 86, in __call__
     next_subsets, complement_offset = self._reduce_config(run, subsets, complement_offset)
                                       ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/picire/dd.py", line 148, in _reduce_config
+  File "/lib/python3.13/site-packages/picire/dd.py", line 148, in _reduce_config
     outcome = self._test_config(config_set, config_id)
-  File "/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/site-packages/picire/dd.py", line 208, in _test_config
+  File "/lib/python3.13/site-packages/picire/dd.py", line 208, in _test_config
     outcome = self._test(config, config_id)
   File "/reducer/dd.py", line 38, in __call__
     return self.remove_definitions(nodes,mode=self.option)
@@ -63,15 +63,15 @@ Traceback (most recent call last):
   File "/reducer/checker.py", line 14, in run_test_script
     result = subprocess.run(command, capture_output=True,
                             text=False)
-  File "/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/subprocess.py", line 558, in run
+  File "/lib/python3.13/subprocess.py", line 558, in run
     stdout, stderr = process.communicate(input, timeout=timeout)
                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/subprocess.py", line 1221, in communicate
+  File "/lib/python3.13/subprocess.py", line 1221, in communicate
     stdout, stderr = self._communicate(input, endtime, timeout)
                      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/subprocess.py", line 2130, in _communicate
+  File "/lib/python3.13/subprocess.py", line 2130, in _communicate
     ready = selector.select(timeout)
-  File "/Users/artemancikov/mambaforge/envs/practical-work/lib/python3.13/selectors.py", line 398, in select
+  File "/lib/python3.13/selectors.py", line 398, in select
     fd_event_list = self._selector.poll(timeout)
 KeyboardInterrupt
 Using source file: /reducer/jdk-crashes/iter_2/Test.java
